@@ -1,21 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27703.2035
+VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - WebAPI", "1 - WebAPI", "{DE154DB2-1E90-4E2A-8DF7-C322B4139ED0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rumo.WebMetasV2.WebAPI", "Rumo.WebMetasV2.WebAPI\Rumo.WebMetasV2.WebAPI.csproj", "{46C942A9-4FDD-47CD-AC9B-BA65745592D8}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Application", "3 - Application", "{6F8C6609-5A88-4CC2-8A73-B8BCD5B16447}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rumo.WebMetasV2.Application", "Rumo.WebMetasV2.Application\Rumo.WebMetasV2.Application.csproj", "{64E39913-2ED0-4AF3-AC46-272ACA982A2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rumo.WebMetasV2.Application", "Rumo.WebMetasV2.Application\Rumo.WebMetasV2.Application.csproj", "{64E39913-2ED0-4AF3-AC46-272ACA982A2C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Domain", "4 - Domain", "{D1395225-43CD-428D-B908-D967B314E022}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rumo.WebMetasV2.Domain", "Rumo.WebMetasV2.Domain\Rumo.WebMetasV2.Domain.csproj", "{4F3A0CD7-E794-40FE-B05E-D0E3FA8706EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rumo.WebMetasV2.Domain", "Rumo.WebMetasV2.Domain\Rumo.WebMetasV2.Domain.csproj", "{4F3A0CD7-E794-40FE-B05E-D0E3FA8706EB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rumo.WebMetasV2.Domain.Core", "Rumo.WebMetasV2.Domain.Core\Rumo.WebMetasV2.Domain.Core.csproj", "{38C29F50-7FD8-4057-A080-98113F590EF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rumo.WebMetasV2.Domain.Core", "Rumo.WebMetasV2.Domain.Core\Rumo.WebMetasV2.Domain.Core.csproj", "{38C29F50-7FD8-4057-A080-98113F590EF9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Infra", "5 - Infra", "{B1D65666-1BC8-4A04-B786-206FB9D3AD2E}"
 EndProject
@@ -23,13 +21,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.1 - Data", "5.1 - Data", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.2 - CrossCutting", "5.2 - CrossCutting", "{7D21DC95-8AF4-45AA-A033-C58637D3886E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rumo.WebMetasV2.Infra.Data", "Rumo.WebMetasV2.Infra.Data\Rumo.WebMetasV2.Infra.Data.csproj", "{EFB65F9B-7CE1-454A-BF14-626C818563E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rumo.WebMetasV2.Infra.Data", "Rumo.WebMetasV2.Infra.Data\Rumo.WebMetasV2.Infra.Data.csproj", "{EFB65F9B-7CE1-454A-BF14-626C818563E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rumo.WebMetasV2.Infra.Data.CrossCutting", "Rumo.WebMetasV2.Infra.Data.CrossCutting\Rumo.WebMetasV2.Infra.Data.CrossCutting.csproj", "{22AE7A5E-5F1A-41C6-8301-88FA93568F31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rumo.WebMetasV2.Infra.Data.CrossCutting", "Rumo.WebMetasV2.Infra.Data.CrossCutting\Rumo.WebMetasV2.Infra.Data.CrossCutting.csproj", "{22AE7A5E-5F1A-41C6-8301-88FA93568F31}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Reports", "2 - Reports", "{59FE37BC-C256-404E-A40F-CECFBCAF1447}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rumo.WebMetasV2.Reports", "Rumo.WebMetasV2.Reports\Rumo.WebMetasV2.Reports.csproj", "{8D374B6D-FA0E-42B0-94A7-B3AFD9608147}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Rumo.WebMetasV2.Reports", "Rumo.WebMetasV2.Reports\Rumo.WebMetasV2.Reports.csproj", "{8D374B6D-FA0E-42B0-94A7-B3AFD9608147}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rumo.WebMetasV2.WebAPI", "Rumo.WebMetasV2.WebAPI\Rumo.WebMetasV2.WebAPI.csproj", "{9F37442A-9D56-4789-A1C5-AB2BFA64DA12}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +37,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{46C942A9-4FDD-47CD-AC9B-BA65745592D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{46C942A9-4FDD-47CD-AC9B-BA65745592D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{46C942A9-4FDD-47CD-AC9B-BA65745592D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{46C942A9-4FDD-47CD-AC9B-BA65745592D8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{64E39913-2ED0-4AF3-AC46-272ACA982A2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{64E39913-2ED0-4AF3-AC46-272ACA982A2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64E39913-2ED0-4AF3-AC46-272ACA982A2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -65,12 +61,15 @@ Global
 		{8D374B6D-FA0E-42B0-94A7-B3AFD9608147}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8D374B6D-FA0E-42B0-94A7-B3AFD9608147}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8D374B6D-FA0E-42B0-94A7-B3AFD9608147}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F37442A-9D56-4789-A1C5-AB2BFA64DA12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F37442A-9D56-4789-A1C5-AB2BFA64DA12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F37442A-9D56-4789-A1C5-AB2BFA64DA12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F37442A-9D56-4789-A1C5-AB2BFA64DA12}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{46C942A9-4FDD-47CD-AC9B-BA65745592D8} = {DE154DB2-1E90-4E2A-8DF7-C322B4139ED0}
 		{64E39913-2ED0-4AF3-AC46-272ACA982A2C} = {6F8C6609-5A88-4CC2-8A73-B8BCD5B16447}
 		{4F3A0CD7-E794-40FE-B05E-D0E3FA8706EB} = {D1395225-43CD-428D-B908-D967B314E022}
 		{38C29F50-7FD8-4057-A080-98113F590EF9} = {D1395225-43CD-428D-B908-D967B314E022}
@@ -79,6 +78,7 @@ Global
 		{EFB65F9B-7CE1-454A-BF14-626C818563E7} = {35C28D56-8EC6-46CB-A8DC-CB1059523CEF}
 		{22AE7A5E-5F1A-41C6-8301-88FA93568F31} = {7D21DC95-8AF4-45AA-A033-C58637D3886E}
 		{8D374B6D-FA0E-42B0-94A7-B3AFD9608147} = {59FE37BC-C256-404E-A40F-CECFBCAF1447}
+		{9F37442A-9D56-4789-A1C5-AB2BFA64DA12} = {DE154DB2-1E90-4E2A-8DF7-C322B4139ED0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F1275277-9D3E-4C47-BB1F-8B885F78AD71}
