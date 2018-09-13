@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - WebAPI", "1 - WebAPI", "{DE154DB2-1E90-4E2A-8DF7-C322B4139ED0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Rumo.WebMetasV2.WebAPI", "Rumo.WebMetasV2.WebAPI\Rumo.WebMetasV2.WebAPI.csproj", "{46C942A9-4FDD-47CD-AC9B-BA65745592D8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46C942A9-4FDD-47CD-AC9B-BA65745592D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46C942A9-4FDD-47CD-AC9B-BA65745592D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46C942A9-4FDD-47CD-AC9B-BA65745592D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46C942A9-4FDD-47CD-AC9B-BA65745592D8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{46C942A9-4FDD-47CD-AC9B-BA65745592D8} = {DE154DB2-1E90-4E2A-8DF7-C322B4139ED0}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F1275277-9D3E-4C47-BB1F-8B885F78AD71}
+	EndGlobalSection
+EndGlobal
