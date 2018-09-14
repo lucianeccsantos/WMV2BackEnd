@@ -1,5 +1,7 @@
 ﻿using MediatR;
 using Rumo.WebMetasV2.Domain.Events.GrupoPoolEvents;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Rumo.WebMetasV2.Domain.EventHandlers
 {
@@ -8,19 +10,22 @@ namespace Rumo.WebMetasV2.Domain.EventHandlers
         INotificationHandler<GrupoPoolUpdatedEvent>,
         INotificationHandler<GrupoPoolRemovedEvent>
     {
-        public void Handle(GrupoPoolRegisteredEvent message)
+        public Task Handle(GrupoPoolRegisteredEvent message, CancellationToken cancellationToken)
         {
             // Send some notification e-mail
+            return Task.CompletedTask;
         }
 
-        public void Handle(GrupoPoolUpdatedEvent message)
+        public Task Handle(GrupoPoolUpdatedEvent message, CancellationToken cancellationToken)
         {
             // Send some greetings e-mail
+            return Task.CompletedTask;
         }
 
-        public void Handle(GrupoPoolRemovedEvent message)
+        public Task Handle(GrupoPoolRemovedEvent message, CancellationToken cancellationToken)
         {
             // Send some see you soon e-mail
+            return Task.CompletedTask;
         }
     }
 }
