@@ -3,16 +3,18 @@ using System;
 
 namespace Rumo.WebMetasV2.Domain.Commands.GrupoPoolCommands
 {
-    public class CadastrarGrupoPoolCommand : GrupoPoolCommand
+    public class AtualizarGrupoPoolCommand : GrupoPoolCommand
     {
-        public CadastrarGrupoPoolCommand(string nome)
+        public AtualizarGrupoPoolCommand(Guid id, string nome)
         {
+            Id = id;
             Nome = nome;
+            AggregateId = id;
         }
 
         public override bool IsValid()
         {
-            ValidationResult = new CadastrarGrupoPoolCommandValidation().Validate(this);
+            ValidationResult = new AtualizarGrupoPoolCommandValidation().Validate(this);
             return ValidationResult.IsValid;
         }
     }

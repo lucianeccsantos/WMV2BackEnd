@@ -7,9 +7,9 @@ namespace Rumo.WebMetasV2.Infra.Data.Repository
 {
     public class GrupoPoolRepository : Repository<GrupoPool>, IGrupoPoolRepository
     {
-        private WebMetasContext _context;
+        private readonly WebMetasContext _context;
 
-        public GrupoRepository(WebMetasContext context) : base(context)
+        public GrupoPoolRepository(WebMetasContext context) : base(context)
         {
             _context = context;
         }
