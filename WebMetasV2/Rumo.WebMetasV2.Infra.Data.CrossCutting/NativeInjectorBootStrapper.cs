@@ -6,6 +6,7 @@ using Rumo.WebMetasV2.Domain.Core.Notifications;
 using Rumo.WebMetasV2.Domain.Interfaces;
 using Rumo.WebMetasV2.Infra.Data.Context;
 using Rumo.WebMetasV2.Infra.Data.EventSourcing;
+using Rumo.WebMetasV2.Infra.Data.Repository;
 using Rumo.WebMetasV2.Infra.Data.UoW;
 
 namespace Rumo.WebMetasV2.Infra.Data.CrossCutting
@@ -39,7 +40,7 @@ namespace Rumo.WebMetasV2.Infra.Data.CrossCutting
             //services.AddScoped<INotificationHandler<RemoveLegalPersonCommand>, LegalPersonCommandHandler>();
 
             // Infra - Data
-            //services.AddScoped<ICityRepository, CityRepository>();
+            services.AddScoped<IGrupoPoolRepository, GrupoPoolRepository>();
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<WebMetasContext>();
