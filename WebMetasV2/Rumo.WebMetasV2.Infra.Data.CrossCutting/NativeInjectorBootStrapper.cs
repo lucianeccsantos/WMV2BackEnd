@@ -41,6 +41,8 @@ namespace Rumo.WebMetasV2.Infra.Data.CrossCutting
 
             // Infra - Data
             services.AddScoped<IGrupoPoolRepository, GrupoPoolRepository>();
+            services.AddScoped<IUnidadeRepository, UnidadeRepository>();
+
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<WebMetasContext>();
