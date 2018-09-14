@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Rumo.WebMetasV2.Application\Rumo.WebMetasV2.Application.csproj" />
     <ProjectReference Include="..\Rumo.WebMetasV2.Domain.Core\Rumo.WebMetasV2.Domain.Core.csproj" />
     <ProjectReference Include="..\Rumo.WebMetasV2.Infra.Data\Rumo.WebMetasV2.Infra.Data.csproj" />
   </ItemGroup>

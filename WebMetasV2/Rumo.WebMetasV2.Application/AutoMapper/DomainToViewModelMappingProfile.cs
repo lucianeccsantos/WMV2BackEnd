@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Rumo.WebMetasV2.Application.ViewModels;
+using Rumo.WebMetasV2.Domain.Models;
 
 namespace Rumo.WebMetasV2.Application.AutoMapper
 {
@@ -6,7 +8,7 @@ namespace Rumo.WebMetasV2.Application.AutoMapper
     {
         public DomainToViewModelMappingProfile()
         {
-            //CreateMap<City, CityViewModel>();
+            CreateMap<GrupoPool, GrupoPoolViewModel>();
         }
     }
 }
