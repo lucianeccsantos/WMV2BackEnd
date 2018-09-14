@@ -5,11 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="EventHandlers\" />
-    <Folder Include="Events\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Rumo.WebMetasV2.Domain.Core\Rumo.WebMetasV2.Domain.Core.csproj" />
   </ItemGroup>
 
