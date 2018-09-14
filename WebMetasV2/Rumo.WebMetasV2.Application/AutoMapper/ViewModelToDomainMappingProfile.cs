@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Rumo.WebMetasV2.Application.ViewModels;
+using Rumo.WebMetasV2.Domain.Commands.GrupoPoolCommands;
 
 namespace Rumo.WebMetasV2.Application.AutoMapper
 {
@@ -6,17 +8,11 @@ namespace Rumo.WebMetasV2.Application.AutoMapper
     {
         public ViewModelToDomainMappingProfile()
         {
-            //CreateMap<LegalPersonViewModel, RegisterNewLegalPersonCommand>()
-            //    .ConstructUsing(c => new RegisterNewLegalPersonCommand(c.Name, c.Address, c.Number, c.Complement, c.Neighborhood, c.CityId,
-            //                                                           c.DDDPrincipal, c.DDDCellPhone, c.TelephonePrincipal, c.CellPhone,
-            //                                                           c.Email, c.Password, c.StateRegistration, c.CNPJ));
+            CreateMap<GrupoPoolViewModel, CadastrarGrupoPoolCommand>()
+                .ConstructUsing(c => new CadastrarGrupoPoolCommand(c.Nome));
 
-            //CreateMap<LegalPersonViewModel, UpdateLegalPersonCommand>()
-            //    .ConstructUsing(c => new UpdateLegalPersonCommand(c.Id, c.Name, c.Address, c.Number, c.Complement, c.Neighborhood, c.CityId,
-            //                                                      c.DDDPrincipal, c.DDDCellPhone, c.TelephonePrincipal, c.CellPhone,
-            //                                                      c.Email, c.Password, c.StateRegistration, c.CNPJ));
-
-           
+            CreateMap<GrupoPoolViewModel, AtualizarGrupoPoolCommand>()
+                .ConstructUsing(c => new AtualizarGrupoPoolCommand(c.Id, c.Nome));
         }
     }
 }
