@@ -4,6 +4,7 @@ using Rumo.WebMetasV2.Application.Interfaces;
 using MediatR;
 using Rumo.WebMetasV2.Domain.Core.Notifications;
 using Rumo.WebMetasV2.Application.ViewModels;
+using Rumo.WebMetasV2.Domain.Core.Bus;
 
 namespace Rumo.WebMetasV2.WebAPI.Controllers
 {
@@ -15,7 +16,8 @@ namespace Rumo.WebMetasV2.WebAPI.Controllers
         int pageSize = 10;
 
         public EscopoController(IEscopoAppService escopoAppService,
-                                INotificationHandler<DomainNotification> notifications) : base(notifications)
+                              INotificationHandler<DomainNotification> notifications,
+                              IMediatorHandler mediator) : base(notifications, mediator)
         {
             _escopoAppService = escopoAppService;
         }

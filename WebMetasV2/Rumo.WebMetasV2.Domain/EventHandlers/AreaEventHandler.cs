@@ -1,5 +1,7 @@
 ﻿using MediatR;
 using Rumo.WebMetasV2.Domain.Events.AreaEvents;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace Rumo.WebMetasV2.Domain.EventHandlers
 {
@@ -8,19 +10,19 @@ namespace Rumo.WebMetasV2.Domain.EventHandlers
         INotificationHandler<AreaUpdatedEvent>,
         INotificationHandler<AreaRemovedEvent>
     {
-        public void Handle(AreaRegisteredEvent message)
+        public Task Handle(AreaRegisteredEvent notification, CancellationToken cancellationToken)
         {
-            // Send some notification e-mail
+            return Task.CompletedTask;
         }
 
-        public void Handle(AreaUpdatedEvent message)
+        public Task Handle(AreaRemovedEvent notification, CancellationToken cancellationToken)
         {
-            // Send some greetings e-mail
+            return Task.CompletedTask;
         }
 
-        public void Handle(AreaRemovedEvent message)
+        public Task Handle(AreaUpdatedEvent notification, CancellationToken cancellationToken)
         {
-            // Send some see you soon e-mail
+            return Task.CompletedTask;
         }
     }
 }

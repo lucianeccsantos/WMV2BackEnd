@@ -6,6 +6,8 @@ using Rumo.WebMetasV2.Domain.Events.EscopoEvents;
 using Rumo.WebMetasV2.Domain.Interfaces;
 using Rumo.WebMetasV2.Domain.Models;
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Rumo.WebMetasV2.Domain.CommandHandlers
 {
@@ -26,12 +28,12 @@ namespace Rumo.WebMetasV2.Domain.CommandHandlers
             Bus = bus;
         }
 
-        public void Handle(CadastrarEscopoCommand message)
+        public Task Handle(CadastrarEscopoCommand message, CancellationToken cancellationToken)
         {
             if (!message.IsValid())
             {
                 NotifyValidationErrors(message);
-                return;
+                return Task.CompletedTask;
             }
 
             var escopo = new Escopo(Guid.NewGuid(), message.Nome);
@@ -41,15 +43,18 @@ namespace Rumo.WebMetasV2.Domain.CommandHandlers
             if (Commit())
             {
                 Bus.RaiseEvent(new EscopoRegisteredEvent(escopo.Id, escopo.Nome));
+                return Task.CompletedTask;
             }
+
+            return Task.CompletedTask;
         }
 
-        public void Handle(AtualizarEscopoCommand message)
+        public Task Handle(AtualizarEscopoCommand message, CancellationToken cancellationToken)
         {
             if (!message.IsValid())
             {
                 NotifyValidationErrors(message);
-                return;
+                return Task.CompletedTask;
             }
 
             var escopo = new Escopo(message.Id, message.Nome);
@@ -59,15 +64,18 @@ namespace Rumo.WebMetasV2.Domain.CommandHandlers
             if (Commit())
             {
                 Bus.RaiseEvent(new EscopoUpdatedEvent(escopo.Id, escopo.Nome));
+                return Task.CompletedTask;
             }
+
+            return Task.CompletedTask;
         }
 
-        public void Handle(RemoverEscopoCommand message)
+        public Task Handle(RemoverEscopoCommand message, CancellationToken cancellationToken)
         {
             if (!message.IsValid())
             {
                 NotifyValidationErrors(message);
-                return;
+                return Task.CompletedTask;
             }
 
             _escopoRepository.Remove(message.Id);
@@ -75,7 +83,10 @@ namespace Rumo.WebMetasV2.Domain.CommandHandlers
             if (Commit())
             {
                 Bus.RaiseEvent(new EscopoRemovedEvent(message.Id));
+                return Task.CompletedTask;
             }
+
+            return Task.CompletedTask;
         }
 
         public void Dispose()

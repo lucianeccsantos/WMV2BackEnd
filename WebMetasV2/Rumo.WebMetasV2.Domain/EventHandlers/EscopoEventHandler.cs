@@ -1,4 +1,6 @@
-﻿using MediatR;
+﻿using System.Threading;
+using System.Threading.Tasks;
+using MediatR;
 using Rumo.WebMetasV2.Domain.Events.EscopoEvents;
 
 namespace Rumo.WebMetasV2.Domain.EventHandlers
@@ -8,19 +10,19 @@ namespace Rumo.WebMetasV2.Domain.EventHandlers
         INotificationHandler<EscopoUpdatedEvent>,
         INotificationHandler<EscopoRemovedEvent>
     {
-        public void Handle(EscopoRegisteredEvent message)
+        public Task Handle(EscopoRegisteredEvent notification, CancellationToken cancellationToken)
         {
-            // Send some notification e-mail
+            return Task.CompletedTask;
         }
 
-        public void Handle(EscopoUpdatedEvent message)
+        public Task Handle(EscopoUpdatedEvent notification, CancellationToken cancellationToken)
         {
-            // Send some greetings e-mail
+            return Task.CompletedTask;
         }
 
-        public void Handle(EscopoRemovedEvent message)
+        public Task Handle(EscopoRemovedEvent notification, CancellationToken cancellationToken)
         {
-            // Send some see you soon e-mail
+            return Task.CompletedTask;
         }
     }
 }

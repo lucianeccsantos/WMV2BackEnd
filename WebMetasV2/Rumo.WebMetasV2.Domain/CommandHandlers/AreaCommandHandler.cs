@@ -6,6 +6,8 @@ using Rumo.WebMetasV2.Domain.Events.AreaEvents;
 using Rumo.WebMetasV2.Domain.Interfaces;
 using Rumo.WebMetasV2.Domain.Models;
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Rumo.WebMetasV2.Domain.CommandHandlers
 {
@@ -26,12 +28,12 @@ namespace Rumo.WebMetasV2.Domain.CommandHandlers
             Bus = bus;
         }
 
-        public void Handle(CadastrarAreaCommand message)
+        public Task Handle(CadastrarAreaCommand message, CancellationToken cancellationToken)
         {
             if (!message.IsValid())
             {
                 NotifyValidationErrors(message);
-                return;
+                return Task.CompletedTask;
             }
 
             var area = new Area(Guid.NewGuid(), message.Nome);
@@ -41,15 +43,18 @@ namespace Rumo.WebMetasV2.Domain.CommandHandlers
             if (Commit())
             {
                 Bus.RaiseEvent(new AreaRegisteredEvent(area.Id, area.Nome));
+                return Task.CompletedTask;
             }
+
+            return Task.CompletedTask;
         }
 
-        public void Handle(AtualizarAreaCommand message)
+        public Task Handle(AtualizarAreaCommand message, CancellationToken cancellationToken)
         {
             if (!message.IsValid())
             {
                 NotifyValidationErrors(message);
-                return;
+                return Task.CompletedTask;
             }
 
             var area = new Area(message.Id, message.Nome);
@@ -59,15 +64,18 @@ namespace Rumo.WebMetasV2.Domain.CommandHandlers
             if (Commit())
             {
                 Bus.RaiseEvent(new AreaUpdatedEvent(area.Id, area.Nome));
+                return Task.CompletedTask;
             }
+
+            return Task.CompletedTask;
         }
 
-        public void Handle(RemoverAreaCommand message)
+        public Task Handle(RemoverAreaCommand message, CancellationToken cancellationToken)
         {
             if (!message.IsValid())
             {
                 NotifyValidationErrors(message);
-                return;
+                return Task.CompletedTask;
             }
 
             _areaRepository.Remove(message.Id);
@@ -75,7 +83,10 @@ namespace Rumo.WebMetasV2.Domain.CommandHandlers
             if (Commit())
             {
                 Bus.RaiseEvent(new AreaRemovedEvent(message.Id));
+                return Task.CompletedTask;
             }
+
+            return Task.CompletedTask;
         }
 
         public void Dispose()
