@@ -17,9 +17,9 @@ namespace Rumo.WebMetasV2.WebAPI.Controllers
     public class UnidadeController : ApiController
     {
         private readonly IUnidadeAppService _unidadeAppService;
-        private readonly int pageSize = 10;
+        int pageSize = 10;
 
-        protected UnidadeController(IUnidadeAppService unidadeAppService,
+        public UnidadeController(IUnidadeAppService unidadeAppService,
                                     INotificationHandler<DomainNotification> notifications, 
                                     IMediatorHandler mediator) : base(notifications, mediator)
         {

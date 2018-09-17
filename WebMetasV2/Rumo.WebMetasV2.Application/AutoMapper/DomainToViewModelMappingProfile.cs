@@ -9,6 +9,7 @@ namespace Rumo.WebMetasV2.Application.AutoMapper
         public DomainToViewModelMappingProfile()
         {
             CreateMap<GrupoPool, GrupoPoolViewModel>();
+            CreateMap<Unidade, UnidadeViewModel>();
         }
     }
 }

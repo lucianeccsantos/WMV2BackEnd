@@ -58,5 +58,6 @@ namespace Rumo.WebMetasV2.WebAPI.Controllers
         {
             _mediator.RaiseEvent(new DomainNotification(code, message));
         }
+       
     }
 }

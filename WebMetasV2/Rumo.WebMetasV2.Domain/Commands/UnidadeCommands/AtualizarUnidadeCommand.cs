@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Rumo.WebMetasV2.Domain.Commands.UnidadeCommands
 {
-    public class AlterarUnidadeCommand : UnidadeCommand
+    public class AtualizarUnidadeCommand : UnidadeCommand
     {
-        public AlterarUnidadeCommand(Guid id, string nome)
+        public AtualizarUnidadeCommand(Guid id, string nome)
         {
             Id = id;
             Nome = nome;

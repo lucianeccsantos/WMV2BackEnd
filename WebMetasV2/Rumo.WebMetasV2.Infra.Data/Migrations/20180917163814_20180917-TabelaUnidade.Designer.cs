@@ -11,9 +11,10 @@ using System;
 namespace Rumo.WebMetasV2.Infra.Data.Migrations
 {
     [DbContext(typeof(WebMetasContext))]
-    partial class WebMetasContextModelSnapshot : ModelSnapshot
+    [Migration("20180917163814_20180917-TabelaUnidade")]
+    partial class _20180917TabelaUnidade
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

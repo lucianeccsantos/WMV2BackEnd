@@ -49,13 +49,13 @@ namespace Rumo.WebMetasV2.Application.Service
 
         public void Remove(Guid id)
         {
-            var removeCommand = _mapper.Map<RemoverUnidadeCommand>(_unidadeRepository.GetById(id));
+            var removeCommand = new RemoverUnidadeCommand(id);
             _bus.SendCommand(removeCommand);
         }
 
         public void Update(UnidadeViewModel unidadeViewModel)
         {
-            var updateCommand = _mapper.Map<AlterarUnidadeCommand>(unidadeViewModel);
+            var updateCommand = _mapper.Map<AtualizarUnidadeCommand>(unidadeViewModel);
             _bus.SendCommand(updateCommand);
         }
 
