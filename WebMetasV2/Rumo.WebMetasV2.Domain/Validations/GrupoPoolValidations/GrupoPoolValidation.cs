@@ -16,7 +16,7 @@ namespace Rumo.WebMetasV2.Domain.Validations.GrupoPoolValidations
         {
             RuleFor(c => c.Nome)
                 .NotEmpty().WithMessage("O nome do grupo de pool é obrigatório")
-                .Length(100).WithMessage("O nome do grupo de pool deve ter, no máximo, 100 caracteres");
+                .Length(2,100).WithMessage("O nome do grupo de pool deve ter, no máximo, 100 caracteres");
         }
     }
 }

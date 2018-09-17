@@ -4,11 +4,15 @@ using Microsoft.Extensions.DependencyInjection;
 using Rumo.WebMetasV2.Application.Interfaces;
 using Rumo.WebMetasV2.Application.Service;
 using Rumo.WebMetasV2.Domain.CommandHandlers;
+using Rumo.WebMetasV2.Domain.Commands.AreaCommands;
+using Rumo.WebMetasV2.Domain.Commands.EscopoCommands;
 using Rumo.WebMetasV2.Domain.Commands.GrupoPoolCommands;
 using Rumo.WebMetasV2.Domain.Core.Bus;
 using Rumo.WebMetasV2.Domain.Core.Events;
 using Rumo.WebMetasV2.Domain.Core.Notifications;
 using Rumo.WebMetasV2.Domain.EventHandlers;
+using Rumo.WebMetasV2.Domain.Events.AreaEvents;
+using Rumo.WebMetasV2.Domain.Events.EscopoEvents;
 using Rumo.WebMetasV2.Domain.Events.GrupoPoolEvents;
 using Rumo.WebMetasV2.Domain.Interfaces;
 using Rumo.WebMetasV2.Infra.Data.Context;
@@ -31,20 +35,41 @@ namespace Rumo.WebMetasV2.Infra.Data.CrossCutting
             // Application
             services.AddSingleton(Mapper.Configuration);
             services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));
+            services.AddScoped<IAreaAppService, AreaAppService>();
+            services.AddScoped<IEscopoAppService, EscopoAppService>();
             services.AddScoped<IGrupoPoolAppService, GrupoPoolAppService>();
 
             // Domain - Events
             services.AddScoped<INotificationHandler<DomainNotification>, DomainNotificationHandler>();
+
+            services.AddScoped<INotificationHandler<AreaRegisteredEvent>, AreaEventHandler>();
+            services.AddScoped<INotificationHandler<AreaUpdatedEvent>, AreaEventHandler>();
+            services.AddScoped<INotificationHandler<AreaRemovedEvent>, AreaEventHandler>();
+
+            services.AddScoped<INotificationHandler<EscopoRegisteredEvent>, EscopoEventHandler>();
+            services.AddScoped<INotificationHandler<EscopoUpdatedEvent>, EscopoEventHandler>();
+            services.AddScoped<INotificationHandler<EscopoRemovedEvent>, EscopoEventHandler>();
+            
             services.AddScoped<INotificationHandler<GrupoPoolRegisteredEvent>, GrupoPoolEventHandler>();
             services.AddScoped<INotificationHandler<GrupoPoolUpdatedEvent>, GrupoPoolEventHandler>();
             services.AddScoped<INotificationHandler<GrupoPoolRemovedEvent>, GrupoPoolEventHandler>();
 
             // Domain - Commands
+            services.AddScoped<INotificationHandler<CadastrarAreaCommand>, AreaCommandHandler>();
+            services.AddScoped<INotificationHandler<AtualizarAreaCommand>, AreaCommandHandler>();
+            services.AddScoped<INotificationHandler<RemoverAreaCommand>, AreaCommandHandler>();
+
+            services.AddScoped<INotificationHandler<CadastrarEscopoCommand>, EscopoCommandHandler>();
+            services.AddScoped<INotificationHandler<AtualizarEscopoCommand>, EscopoCommandHandler>();
+            services.AddScoped<INotificationHandler<RemoverEscopoCommand>, EscopoCommandHandler>();
+
             services.AddScoped<INotificationHandler<CadastrarGrupoPoolCommand>, GrupoPoolCommandHandler>();
             services.AddScoped<INotificationHandler<AtualizarGrupoPoolCommand>, GrupoPoolCommandHandler>();
             services.AddScoped<INotificationHandler<RemoverGrupoPoolCommand>, GrupoPoolCommandHandler>();
 
             // Infra - Data
+            services.AddScoped<IAreaRepository, AreaRepository>();
+            services.AddScoped<IEscopoRepository, EscopoRepository>();
             services.AddScoped<IGrupoPoolRepository, GrupoPoolRepository>();
             services.AddScoped<IUnidadeRepository, UnidadeRepository>();
 
