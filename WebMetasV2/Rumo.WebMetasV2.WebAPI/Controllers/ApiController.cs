@@ -1,18 +1,22 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Rumo.WebMetasV2.Domain.Core.Bus;
 using Rumo.WebMetasV2.Domain.Core.Notifications;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Rumo.WebMetasV2.WebAPI.Controllers
 {
     public abstract class ApiController : ControllerBase
     {
         private readonly DomainNotificationHandler _notifications;
+        private readonly IMediatorHandler _mediator;
 
-        protected ApiController(INotificationHandler<DomainNotification> notifications)
+        protected ApiController(INotificationHandler<DomainNotification> notifications, IMediatorHandler mediator)
         {
             _notifications = (DomainNotificationHandler)notifications;
+        _mediator = mediator;
         }
 
         protected IEnumerable<DomainNotification> Notifications => _notifications.GetNotifications();
@@ -52,7 +56,8 @@ namespace Rumo.WebMetasV2.WebAPI.Controllers
 
         protected void NotifyError(string code, string message)
         {
-            _notifications.Handle(new DomainNotification(code, message));
+            _mediator.RaiseEvent(new DomainNotification(code, message));
         }
+       
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Rumo.WebMetasV2.Domain.Validations.UnidadeValidations
 {
-    public class AlterarUnidadeCommandValidation: UnidadeValidation<AlterarUnidadeCommand>
+    public class AlterarUnidadeCommandValidation: UnidadeValidation<AtualizarUnidadeCommand>
     {
         public AlterarUnidadeCommandValidation()
         {

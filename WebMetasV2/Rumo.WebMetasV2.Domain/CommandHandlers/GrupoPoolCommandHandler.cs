@@ -6,6 +6,8 @@ using Rumo.WebMetasV2.Domain.Events.GrupoPoolEvents;
 using Rumo.WebMetasV2.Domain.Interfaces;
 using Rumo.WebMetasV2.Domain.Models;
 using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Rumo.WebMetasV2.Domain.CommandHandlers
 {
@@ -26,12 +28,12 @@ namespace Rumo.WebMetasV2.Domain.CommandHandlers
             Bus = bus;
         }
 
-        public void Handle(CadastrarGrupoPoolCommand message)
+        public Task Handle(CadastrarGrupoPoolCommand message, CancellationToken cancellationToken)
         {
             if (!message.IsValid())
             {
                 NotifyValidationErrors(message);
-                return;
+                return Task.CompletedTask;
             }
 
             var grupoPool = new GrupoPool(Guid.NewGuid(), message.Nome);
@@ -41,15 +43,17 @@ namespace Rumo.WebMetasV2.Domain.CommandHandlers
             if (Commit())
             {
                 Bus.RaiseEvent(new GrupoPoolRegisteredEvent(grupoPool.Id, grupoPool.Nome));
+                return Task.CompletedTask;
             }
+            return Task.CompletedTask;
         }
 
-        public void Handle(AtualizarGrupoPoolCommand message)
+        public Task Handle(AtualizarGrupoPoolCommand message, CancellationToken cancellationToken)
         {
             if (!message.IsValid())
             {
                 NotifyValidationErrors(message);
-                return;
+                return Task.CompletedTask;
             }
 
             var grupoPool = new GrupoPool(message.Id, message.Nome);
@@ -59,15 +63,18 @@ namespace Rumo.WebMetasV2.Domain.CommandHandlers
             if (Commit())
             {
                 Bus.RaiseEvent(new GrupoPoolUpdatedEvent(grupoPool.Id, grupoPool.Nome));
+                return Task.CompletedTask;
             }
+
+            return Task.CompletedTask;
         }
 
-        public void Handle(RemoverGrupoPoolCommand message)
+        public Task Handle(RemoverGrupoPoolCommand message, CancellationToken cancellationToken)
         {
             if (!message.IsValid())
             {
                 NotifyValidationErrors(message);
-                return;
+                return Task.CompletedTask;
             }
 
             _grupoPoolRepository.Remove(message.Id);
@@ -75,7 +82,9 @@ namespace Rumo.WebMetasV2.Domain.CommandHandlers
             if (Commit())
             {
                 Bus.RaiseEvent(new GrupoPoolRemovedEvent(message.Id));
+                return Task.CompletedTask;
             }
+            return Task.CompletedTask;
         }
 
         public void Dispose()
