@@ -3,6 +3,7 @@ using Rumo.WebMetasV2.Application.ViewModels;
 using Rumo.WebMetasV2.Domain.Commands.AreaCommands;
 using Rumo.WebMetasV2.Domain.Commands.EscopoCommands;
 using Rumo.WebMetasV2.Domain.Commands.GrupoPoolCommands;
+using Rumo.WebMetasV2.Domain.Commands.IndicadorCommands;
 using Rumo.WebMetasV2.Domain.Commands.UnidadeCommands;
 
 namespace Rumo.WebMetasV2.Application.AutoMapper
@@ -28,12 +29,13 @@ namespace Rumo.WebMetasV2.Application.AutoMapper
 
             CreateMap<UnidadeViewModel, CadastrarUnidadeCommand>()
                 .ConstructUsing(c => new CadastrarUnidadeCommand(c.Nome));
-
             CreateMap<UnidadeViewModel, AtualizarUnidadeCommand>()
                 .ConstructUsing(c => new AtualizarUnidadeCommand(c.Id, c.Nome));
 
-            CreateMap<UnidadeViewModel, RemoverUnidadeCommand>()
-                .ConstructUsing(c => new RemoverUnidadeCommand(c.Id));
+            CreateMap<IndicadorViewModel, CadastrarIndicadorCommand>()
+                .ConstructUsing(c => new CadastrarIndicadorCommand(c.Nome, c.DirecaoIndicador, c.TipoIndicador, c.MesInicio, c.MesFim));
+            CreateMap<IndicadorViewModel, AtualizarIndicadorCommand>()
+                .ConstructUsing(c => new AtualizarIndicadorCommand(c.Id, c.Nome, c.DirecaoIndicador, c.TipoIndicador, c.MesInicio, c.MesFim));
         }
     }
 }

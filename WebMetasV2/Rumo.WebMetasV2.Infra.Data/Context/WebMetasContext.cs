@@ -12,6 +12,8 @@ namespace Rumo.WebMetasV2.Infra.Data.Context
         public DbSet<Area> Area { get; set; }
         public DbSet<Escopo> Escopo { get; set; }
         public DbSet<GrupoPool> GrupoPool { get; set; }
+        public DbSet<Indicador> Indicador { get; set; }
+        public DbSet<IndicadorEscopoArea> IndicadorEscopoArea { get; set; }
         public DbSet<StoredEvent> StoredEvent { get; set; }
         public DbSet<Unidade> Unidade { get; set; }
 
@@ -20,6 +22,8 @@ namespace Rumo.WebMetasV2.Infra.Data.Context
             modelBuilder.ApplyConfiguration(new AreaMap());
             modelBuilder.ApplyConfiguration(new EscopoMap());
             modelBuilder.ApplyConfiguration(new GrupoPoolMap());
+            modelBuilder.ApplyConfiguration(new IndicadorMap());
+            modelBuilder.ApplyConfiguration(new IndicadorEscopoAreaMap());
             modelBuilder.ApplyConfiguration(new StoredEventMap());
             modelBuilder.ApplyConfiguration(new UnidadeMap());
 

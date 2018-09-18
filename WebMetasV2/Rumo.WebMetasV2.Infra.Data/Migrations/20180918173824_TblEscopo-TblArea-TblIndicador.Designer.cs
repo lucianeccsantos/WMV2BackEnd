@@ -12,9 +12,10 @@ using System;
 namespace Rumo.WebMetasV2.Infra.Data.Migrations
 {
     [DbContext(typeof(WebMetasContext))]
-    partial class WebMetasContextModelSnapshot : ModelSnapshot
+    [Migration("20180918173824_TblEscopo-TblArea-TblIndicador")]
+    partial class TblEscopoTblAreaTblIndicador
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -112,34 +113,6 @@ namespace Rumo.WebMetasV2.Infra.Data.Migrations
                     b.ToTable("Indicador");
                 });
 
-            modelBuilder.Entity("Rumo.WebMetasV2.Domain.Models.IndicadorEscopoArea", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<Guid?>("AreaId");
-
-                    b.Property<Guid?>("EscopoId");
-
-                    b.Property<Guid>("IdArea");
-
-                    b.Property<Guid>("IdEscopo");
-
-                    b.Property<Guid>("IdIndicador");
-
-                    b.Property<Guid?>("IndicadorId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AreaId");
-
-                    b.HasIndex("EscopoId");
-
-                    b.HasIndex("IndicadorId");
-
-                    b.ToTable("IndicadorEscopoArea");
-                });
-
             modelBuilder.Entity("Rumo.WebMetasV2.Domain.Models.Unidade", b =>
                 {
                     b.Property<Guid>("Id")
@@ -153,21 +126,6 @@ namespace Rumo.WebMetasV2.Infra.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Unidade");
-                });
-
-            modelBuilder.Entity("Rumo.WebMetasV2.Domain.Models.IndicadorEscopoArea", b =>
-                {
-                    b.HasOne("Rumo.WebMetasV2.Domain.Models.Area", "Area")
-                        .WithMany()
-                        .HasForeignKey("AreaId");
-
-                    b.HasOne("Rumo.WebMetasV2.Domain.Models.Escopo", "Escopo")
-                        .WithMany()
-                        .HasForeignKey("EscopoId");
-
-                    b.HasOne("Rumo.WebMetasV2.Domain.Models.Indicador", "Indicador")
-                        .WithMany()
-                        .HasForeignKey("IndicadorId");
                 });
 #pragma warning restore 612, 618
         }

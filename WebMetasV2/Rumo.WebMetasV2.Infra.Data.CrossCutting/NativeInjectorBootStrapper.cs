@@ -21,6 +21,8 @@ using Rumo.WebMetasV2.Infra.Data.Context;
 using Rumo.WebMetasV2.Infra.Data.EventSourcing;
 using Rumo.WebMetasV2.Infra.Data.Repository;
 using Rumo.WebMetasV2.Infra.Data.UoW;
+using Rumo.WebMetasV2.Domain.Events.IndicadorEvents;
+using Rumo.WebMetasV2.Domain.Commands.IndicadorCommands;
 
 namespace Rumo.WebMetasV2.Infra.Data.CrossCutting
 {
@@ -39,6 +41,7 @@ namespace Rumo.WebMetasV2.Infra.Data.CrossCutting
             services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));
             services.AddScoped<IAreaAppService, AreaAppService>();
             services.AddScoped<IEscopoAppService, EscopoAppService>();
+            services.AddScoped<IIndicadorAppService, IndicadorAppService>();
             services.AddScoped<IGrupoPoolAppService, GrupoPoolAppService>();
             services.AddScoped<IUnidadeAppService, UnidadeAppService>();
 
@@ -57,6 +60,10 @@ namespace Rumo.WebMetasV2.Infra.Data.CrossCutting
             services.AddScoped<INotificationHandler<GrupoPoolUpdatedEvent>, GrupoPoolEventHandler>();
             services.AddScoped<INotificationHandler<GrupoPoolRemovedEvent>, GrupoPoolEventHandler>();
 
+            services.AddScoped<INotificationHandler<IndicadorRegisteredEvent>, IndicadorEventHandler>();
+            services.AddScoped<INotificationHandler<IndicadorUpdatedEvent>, IndicadorEventHandler>();
+            services.AddScoped<INotificationHandler<IndicadorRemovedEvent>, IndicadorEventHandler>();
+
             services.AddScoped<INotificationHandler<UnidadeRegisteredEvent>, UnidadeEventHandler>();
             services.AddScoped<INotificationHandler<UnidadeUpdatedEvent>, UnidadeEventHandler>();
             services.AddScoped<INotificationHandler<UnidadeRemovedEvent>, UnidadeEventHandler>();
@@ -74,6 +81,10 @@ namespace Rumo.WebMetasV2.Infra.Data.CrossCutting
             services.AddScoped<INotificationHandler<AtualizarGrupoPoolCommand>, GrupoPoolCommandHandler>();
             services.AddScoped<INotificationHandler<RemoverGrupoPoolCommand>, GrupoPoolCommandHandler>();
 
+            services.AddScoped<INotificationHandler<CadastrarIndicadorCommand>, IndicadorCommandHandler>();
+            services.AddScoped<INotificationHandler<AtualizarIndicadorCommand>, IndicadorCommandHandler>();
+            services.AddScoped<INotificationHandler<RemoverIndicadorCommand>, IndicadorCommandHandler>();
+
             services.AddScoped<INotificationHandler<CadastrarUnidadeCommand>, UnidadeCommandHandler>();
             services.AddScoped<INotificationHandler<AtualizarUnidadeCommand>, UnidadeCommandHandler>();
             services.AddScoped<INotificationHandler<RemoverUnidadeCommand>, UnidadeCommandHandler>();
@@ -84,6 +95,7 @@ namespace Rumo.WebMetasV2.Infra.Data.CrossCutting
             services.AddScoped<IAreaRepository, AreaRepository>();
             services.AddScoped<IEscopoRepository, EscopoRepository>();
             services.AddScoped<IGrupoPoolRepository, GrupoPoolRepository>();
+            services.AddScoped<IIndicadorRepository, IndicadorRepository>();
             services.AddScoped<IUnidadeRepository, UnidadeRepository>();
 
 

@@ -12,9 +12,10 @@ using System;
 namespace Rumo.WebMetasV2.Infra.Data.Migrations
 {
     [DbContext(typeof(WebMetasContext))]
-    partial class WebMetasContextModelSnapshot : ModelSnapshot
+    [Migration("20180918185413_TblIndicadorEscopoArea")]
+    partial class TblIndicadorEscopoArea
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
