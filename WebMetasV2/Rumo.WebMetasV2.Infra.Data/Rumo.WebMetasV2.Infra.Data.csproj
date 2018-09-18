@@ -5,6 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20180918160122_20130918TabelaPerfil.cs" />
+    <Compile Remove="Migrations\20180918160222_20130918-TabelaPerfil.cs" />
+    <Compile Remove="Migrations\20180918160545_20130918-TabelaPerfil.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.0" />

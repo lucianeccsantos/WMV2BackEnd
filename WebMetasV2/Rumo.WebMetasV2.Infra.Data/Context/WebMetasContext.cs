@@ -12,12 +12,14 @@ namespace Rumo.WebMetasV2.Infra.Data.Context
         public DbSet<GrupoPool> GrupoPool { get; set; }
         public DbSet<StoredEvent> StoredEvent { get; set; }
         public DbSet<Unidade> Unidade { get; set; }
+        public DbSet<Perfil> Perfil { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new GrupoPoolMap());
             modelBuilder.ApplyConfiguration(new StoredEventMap());
             modelBuilder.ApplyConfiguration(new UnidadeMap());
+            modelBuilder.ApplyConfiguration(new PerfilMap());
 
             base.OnModelCreating(modelBuilder);
         }

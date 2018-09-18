@@ -10,6 +10,8 @@ namespace Rumo.WebMetasV2.Application.AutoMapper
         {
             CreateMap<GrupoPool, GrupoPoolViewModel>();
             CreateMap<Unidade, UnidadeViewModel>();
+            CreateMap<Perfil, PerfilViewModel>();
+            CreateMap<PagedResult<Perfil>, PagedResult<PerfilViewModel>>();
         }
     }
 }
