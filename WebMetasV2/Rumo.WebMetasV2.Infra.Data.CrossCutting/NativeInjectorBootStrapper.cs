@@ -4,6 +4,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Rumo.WebMetasV2.Application.Interfaces;
 using Rumo.WebMetasV2.Application.Service;
 using Rumo.WebMetasV2.Domain.CommandHandlers;
+using Rumo.WebMetasV2.Domain.Commands.AreaCommands;
+using Rumo.WebMetasV2.Domain.Commands.EscopoCommands;
 using Rumo.WebMetasV2.Domain.Commands.GrupoPoolCommands;
 using Rumo.WebMetasV2.Domain.Commands.PerfilCommands;
 using Rumo.WebMetasV2.Domain.Commands.UnidadeCommands;
@@ -11,6 +13,8 @@ using Rumo.WebMetasV2.Domain.Core.Bus;
 using Rumo.WebMetasV2.Domain.Core.Events;
 using Rumo.WebMetasV2.Domain.Core.Notifications;
 using Rumo.WebMetasV2.Domain.EventHandlers;
+using Rumo.WebMetasV2.Domain.Events.AreaEvents;
+using Rumo.WebMetasV2.Domain.Events.EscopoEvents;
 using Rumo.WebMetasV2.Domain.Events;
 using Rumo.WebMetasV2.Domain.Events.GrupoPoolEvents;
 using Rumo.WebMetasV2.Domain.Events.PerfilEvents;
@@ -35,23 +39,28 @@ namespace Rumo.WebMetasV2.Infra.Data.CrossCutting
             // Application
             services.AddSingleton(Mapper.Configuration);
             services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<IConfigurationProvider>(), sp.GetService));
+            services.AddScoped<IAreaAppService, AreaAppService>();
+            services.AddScoped<IEscopoAppService, EscopoAppService>();
             services.AddScoped<IGrupoPoolAppService, GrupoPoolAppService>();
-            services.AddScoped<IUnidadeAppService, UnidadeAppService>();
             services.AddScoped<IPerfilAppService, PerfilAppService>();
+            services.AddScoped<IUnidadeAppService, UnidadeAppService>();
+            
 
             // Domain - Events
             services.AddScoped<INotificationHandler<DomainNotification>, DomainNotificationHandler>();
+
+            services.AddScoped<INotificationHandler<AreaRegisteredEvent>, AreaEventHandler>();
+            services.AddScoped<INotificationHandler<AreaUpdatedEvent>, AreaEventHandler>();
+            services.AddScoped<INotificationHandler<AreaRemovedEvent>, AreaEventHandler>();
+
+            services.AddScoped<INotificationHandler<EscopoRegisteredEvent>, EscopoEventHandler>();
+            services.AddScoped<INotificationHandler<EscopoUpdatedEvent>, EscopoEventHandler>();
+            services.AddScoped<INotificationHandler<EscopoRemovedEvent>, EscopoEventHandler>();
 
             #region Events - GrupoPool
             services.AddScoped<INotificationHandler<GrupoPoolRegisteredEvent>, GrupoPoolEventHandler>();
             services.AddScoped<INotificationHandler<GrupoPoolUpdatedEvent>, GrupoPoolEventHandler>();
             services.AddScoped<INotificationHandler<GrupoPoolRemovedEvent>, GrupoPoolEventHandler>();
-            #endregion
-
-            #region Events - Unidade
-            services.AddScoped<INotificationHandler<UnidadeRegisteredEvent>, UnidadeEventHandler>();
-            services.AddScoped<INotificationHandler<UnidadeUpdatedEvent>, UnidadeEventHandler>();
-            services.AddScoped<INotificationHandler<UnidadeRemovedEvent>, UnidadeEventHandler>();
             #endregion
 
             #region Events - Perfil
@@ -60,17 +69,32 @@ namespace Rumo.WebMetasV2.Infra.Data.CrossCutting
             services.AddScoped<INotificationHandler<PerfilRemovedEvents>, PerfilEventHandler>();
             #endregion
 
+            #region Events - Unidade
+            services.AddScoped<INotificationHandler<UnidadeRegisteredEvent>, UnidadeEventHandler>();
+            services.AddScoped<INotificationHandler<UnidadeUpdatedEvent>, UnidadeEventHandler>();
+            services.AddScoped<INotificationHandler<UnidadeRemovedEvent>, UnidadeEventHandler>();
+            #endregion
+
+
+
             // Domain - Commands
+            #region Commands - Area
+            services.AddScoped<INotificationHandler<CadastrarAreaCommand>, AreaCommandHandler>();
+            services.AddScoped<INotificationHandler<AtualizarAreaCommand>, AreaCommandHandler>();
+            services.AddScoped<INotificationHandler<RemoverAreaCommand>, AreaCommandHandler>();
+            #endregion
+
+            #region Commands - Escopo
+            services.AddScoped<INotificationHandler<CadastrarEscopoCommand>, EscopoCommandHandler>();
+            services.AddScoped<INotificationHandler<AtualizarEscopoCommand>, EscopoCommandHandler>();
+            services.AddScoped<INotificationHandler<RemoverEscopoCommand>, EscopoCommandHandler>();
+
+            #endregion
+
             #region Commands - GrupoPool
             services.AddScoped<INotificationHandler<CadastrarGrupoPoolCommand>, GrupoPoolCommandHandler>();
             services.AddScoped<INotificationHandler<AtualizarGrupoPoolCommand>, GrupoPoolCommandHandler>();
             services.AddScoped<INotificationHandler<RemoverGrupoPoolCommand>, GrupoPoolCommandHandler>();
-            #endregion
-
-            #region Commands - Unidade
-            services.AddScoped<INotificationHandler<CadastrarUnidadeCommand>, UnidadeCommandHandler>();
-            services.AddScoped<INotificationHandler<AtualizarUnidadeCommand>, UnidadeCommandHandler>();
-            services.AddScoped<INotificationHandler<RemoverUnidadeCommand>, UnidadeCommandHandler>();
             #endregion
 
             #region Commands - Perfil
@@ -79,12 +103,22 @@ namespace Rumo.WebMetasV2.Infra.Data.CrossCutting
             services.AddScoped<INotificationHandler<RemoverPerfilCommand>, PerfilCommandHandler>();
             #endregion
 
+            #region Commands - Unidade
+            services.AddScoped<INotificationHandler<CadastrarUnidadeCommand>, UnidadeCommandHandler>();
+            services.AddScoped<INotificationHandler<AtualizarUnidadeCommand>, UnidadeCommandHandler>();
+            services.AddScoped<INotificationHandler<RemoverUnidadeCommand>, UnidadeCommandHandler>();
+            #endregion
+
+            
+
             
             // Infra - Data
+            services.AddScoped<IAreaRepository, AreaRepository>();
+            services.AddScoped<IEscopoRepository, EscopoRepository>();
             services.AddScoped<IGrupoPoolRepository, GrupoPoolRepository>();
-            services.AddScoped<IUnidadeRepository, UnidadeRepository>();
             services.AddScoped<IPerfilRepository, PerfilRepository>();
-
+            services.AddScoped<IUnidadeRepository, UnidadeRepository>();
+            
 
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<WebMetasContext>();
