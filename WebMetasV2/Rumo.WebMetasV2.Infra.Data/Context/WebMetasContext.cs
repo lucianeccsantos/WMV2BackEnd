@@ -16,6 +16,7 @@ namespace Rumo.WebMetasV2.Infra.Data.Context
         public DbSet<IndicadorEscopoArea> IndicadorEscopoArea { get; set; }
         public DbSet<StoredEvent> StoredEvent { get; set; }
         public DbSet<Unidade> Unidade { get; set; }
+        public DbSet<Perfil> Perfil { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -26,6 +27,7 @@ namespace Rumo.WebMetasV2.Infra.Data.Context
             modelBuilder.ApplyConfiguration(new IndicadorEscopoAreaMap());
             modelBuilder.ApplyConfiguration(new StoredEventMap());
             modelBuilder.ApplyConfiguration(new UnidadeMap());
+            modelBuilder.ApplyConfiguration(new PerfilMap());
 
             base.OnModelCreating(modelBuilder);
         }

@@ -17,6 +17,8 @@ namespace Rumo.WebMetasV2.Application.AutoMapper
             CreateMap<PagedResult<GrupoPool>, PagedResult<GrupoPoolViewModel>>();
             CreateMap<Indicador, IndicadorViewModel>();
             CreateMap<PagedResult<Indicador>, PagedResult<IndicadorViewModel>>();
+            CreateMap<Perfil, PerfilViewModel>();
+            CreateMap<PagedResult<Perfil>, PagedResult<PerfilViewModel>>();
         }
     }
 }

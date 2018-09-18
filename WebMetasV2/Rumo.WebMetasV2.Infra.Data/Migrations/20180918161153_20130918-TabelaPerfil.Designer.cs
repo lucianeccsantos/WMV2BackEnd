@@ -5,16 +5,16 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Storage.Internal;
-using Rumo.WebMetasV2.Domain.Enumeradores;
 using Rumo.WebMetasV2.Infra.Data.Context;
 using System;
 
 namespace Rumo.WebMetasV2.Infra.Data.Migrations
 {
     [DbContext(typeof(WebMetasContext))]
-    partial class WebMetasContextModelSnapshot : ModelSnapshot
+    [Migration("20180918161153_20130918-TabelaPerfil")]
+    partial class _20130918TabelaPerfil
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -42,36 +42,6 @@ namespace Rumo.WebMetasV2.Infra.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("StoredEvent");
-                });
-
-            modelBuilder.Entity("Rumo.WebMetasV2.Domain.Models.Area", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("varchar(100)")
-                        .HasMaxLength(100);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Area");
-                });
-
-            modelBuilder.Entity("Rumo.WebMetasV2.Domain.Models.Escopo", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Nome")
-                        .IsRequired()
-                        .HasColumnType("varchar(100)")
-                        .HasMaxLength(100);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Escopo");
                 });
 
             modelBuilder.Entity("Rumo.WebMetasV2.Domain.Models.GrupoPool", b =>
@@ -120,21 +90,6 @@ namespace Rumo.WebMetasV2.Infra.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Unidade");
-                });
-
-            modelBuilder.Entity("Rumo.WebMetasV2.Domain.Models.IndicadorEscopoArea", b =>
-                {
-                    b.HasOne("Rumo.WebMetasV2.Domain.Models.Area", "Area")
-                        .WithMany()
-                        .HasForeignKey("AreaId");
-
-                    b.HasOne("Rumo.WebMetasV2.Domain.Models.Escopo", "Escopo")
-                        .WithMany()
-                        .HasForeignKey("EscopoId");
-
-                    b.HasOne("Rumo.WebMetasV2.Domain.Models.Indicador", "Indicador")
-                        .WithMany()
-                        .HasForeignKey("IndicadorId");
                 });
 #pragma warning restore 612, 618
         }
