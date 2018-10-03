@@ -42,5 +42,25 @@ namespace Rumo.WebMetasV2.Domain.Validations.IndicadorValidations
             RuleFor(c => c.MesFim)
                 .IsInEnum().WithMessage("O mês de fim é inválido");
         }
+
+        protected void ValidateDescricao()
+        {
+            RuleFor(c => c.Descricao)
+                .NotEmpty().WithMessage("A descrição é obrigatória")
+                .Length(2, 200).WithMessage("A descrição deve ter, no máximo, 200 caracteres");
+        }
+
+        protected void ValidateFormulaCalculo()
+        {
+            RuleFor(c => c.FormulaCalculo)
+                .NotEmpty().WithMessage("A fórmula de cálculo é obrigatória")
+                .Length(2, 200).WithMessage("A fórmula de cálculo deve ter, no máximo, 200 caracteres");
+        }
+
+        protected void ValidatePeriodicidade()
+        {
+            RuleFor(c => c.Periodicidade)
+                .IsInEnum().WithMessage("A periodicidade é inválida");
+        }
     }
 }

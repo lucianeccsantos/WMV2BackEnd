@@ -15,6 +15,5 @@ namespace Rumo.WebMetasV2.Domain.Interfaces
         int SaveChanges();
         IQueryable<TEntity> GetAll(params Expression<Func<TEntity, object>>[] includes);
         PagedResult<TEntity> GetPagedResultForQuery(IQueryable<TEntity> query, int page, int pageSize);
-
     }
 }

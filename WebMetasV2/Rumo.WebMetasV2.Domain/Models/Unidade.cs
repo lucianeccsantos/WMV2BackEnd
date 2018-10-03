@@ -1,7 +1,6 @@
 ﻿using Rumo.WebMetasV2.Domain.Core.Models;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Rumo.WebMetasV2.Domain.Models
 {
@@ -13,10 +12,9 @@ namespace Rumo.WebMetasV2.Domain.Models
             Nome = nome;
         }
 
-        protected Unidade()
-        {
-        }
+        protected Unidade() { }
 
         public string Nome { get; private set; }
+        public IEnumerable<Colaborador> Colaboradores { get; set; }
     }
 }

@@ -40,6 +40,8 @@ namespace Rumo.WebMetasV2.Application.Service
         {
             var registerCommand = _mapper.Map<CadastrarIndicadorCommand>(indicadorViewModel);
             Bus.SendCommand(registerCommand);
+
+            var indicadorEscopoArea = TransformaIndicadorEmIndicadorEscopoArea(indicadorViewModel);
         }
 
         public void Update(IndicadorViewModel indicadorViewModel)
@@ -62,6 +64,27 @@ namespace Rumo.WebMetasV2.Application.Service
         public PagedResult<IndicadorViewModel> ListForPaging(int page, int pageSize)
         {
             return _mapper.Map<PagedResult<IndicadorViewModel>>(_indicadorRepository.ListForEntity(page, pageSize));
+        }
+
+        public IEnumerable<IndicadorEscopoAreaViewModel> TransformaIndicadorEmIndicadorEscopoArea(IndicadorViewModel indicador)
+        {
+            var lista = new List<IndicadorEscopoAreaViewModel>();
+
+            foreach(var escopo in indicador.Escopos)
+            {
+                var indicadorEscopoArea = new IndicadorEscopoAreaViewModel();
+                indicadorEscopoArea.IdIndicador = indicador.Id;
+                indicadorEscopoArea.IdEscopo = escopo.Id;
+
+                foreach(var area in escopo.Areas)
+                {
+                    indicadorEscopoArea.IdArea = area.Id;
+                }
+
+                lista.Add(indicadorEscopoArea);
+            }
+
+            return lista;
         }
     }
 }

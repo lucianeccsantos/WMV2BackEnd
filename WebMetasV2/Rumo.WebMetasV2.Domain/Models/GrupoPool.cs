@@ -1,5 +1,6 @@
 ﻿using Rumo.WebMetasV2.Domain.Core.Models;
 using System;
+using System.Collections.Generic;
 
 namespace Rumo.WebMetasV2.Domain.Models
 {
@@ -14,5 +15,7 @@ namespace Rumo.WebMetasV2.Domain.Models
         public GrupoPool() { }
 
         public string Nome { get; private set; }
+
+        public virtual IEnumerable<Cargo> Cargos { get; set; }
     }
 }

@@ -11,5 +11,8 @@ namespace Rumo.WebMetasV2.Domain.Commands.IndicadorCommands
         public Enumeradores.Enumerador.TipoIndicador TipoIndicador { get; set; }
         public Enumeradores.Enumerador.Mes MesInicio { get; set; }
         public Enumeradores.Enumerador.Mes MesFim { get; set; }
+        public string Descricao { get; set; }
+        public string FormulaCalculo { get; set; }
+        public Enumeradores.Enumerador.Periodicidade Periodicidade { get; set; }
     }
 }

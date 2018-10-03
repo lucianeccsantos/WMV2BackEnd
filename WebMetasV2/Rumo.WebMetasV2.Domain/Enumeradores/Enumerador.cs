@@ -5,7 +5,8 @@
         public enum TipoIndicador {
             Soma = 1,
             MediaSimples = 2,
-            Acumulado
+            Acumulado = 3,
+            UltimoMes = 4
         }
 
         public enum DirecaoIndicador
@@ -30,6 +31,15 @@
             Outubro = 10,
             Novembro = 11,
             Dezembro = 12
+        }
+
+        public enum Periodicidade
+        {
+            Acumulado = 1,
+            Bimestral = 2,
+            Trimestral = 3,
+            Quadrimestral = 4,
+            Semestral = 5
         }
     }
 }

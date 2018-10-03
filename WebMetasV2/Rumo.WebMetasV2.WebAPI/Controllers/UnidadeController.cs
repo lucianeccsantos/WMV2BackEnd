@@ -63,6 +63,21 @@ namespace Rumo.WebMetasV2.WebAPI.Controllers
             return Response(unidade);
         }
 
+        // PUT: api/Unidade
+        [HttpPut]
+        public IActionResult Put([FromBody]UnidadeViewModel unidade)
+        {
+            if (!ModelState.IsValid)
+            {
+                NotifyModelStateErrors();
+                return Response(unidade);
+            }
+
+            _unidadeAppService.Update(unidade);
+
+            return Response(unidade);
+        }
+
         //DELETE: api/Unidade/id
         [HttpDelete("{id}")]
         public IActionResult Delete(Guid id)

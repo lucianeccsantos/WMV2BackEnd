@@ -19,5 +19,6 @@ namespace Rumo.WebMetasV2.Domain.Models
 
         public string Nome { get; private set; }
         public bool Situacao { get; private set; }
+        public IEnumerable<Colaborador> Colaboradores { get; set; }
     }
 }

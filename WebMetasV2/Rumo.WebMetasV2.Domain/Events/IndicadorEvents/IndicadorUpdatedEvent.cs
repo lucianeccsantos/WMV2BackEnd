@@ -7,7 +7,8 @@ namespace Rumo.WebMetasV2.Domain.Events.IndicadorEvents
     {
         public IndicadorUpdatedEvent(Guid id, string nome, Enumeradores.Enumerador.DirecaoIndicador direcaoIndicador,
                                      Enumeradores.Enumerador.TipoIndicador tipoIndicador, Enumeradores.Enumerador.Mes mesInicio,
-                                     Enumeradores.Enumerador.Mes mesFim)
+                                     Enumeradores.Enumerador.Mes mesFim, string descricao, string formulaCalculo,
+                                        Enumeradores.Enumerador.Periodicidade periodicidade)
         {
             Id = id;
             Nome = nome;
@@ -16,6 +17,9 @@ namespace Rumo.WebMetasV2.Domain.Events.IndicadorEvents
             MesInicio = mesInicio;
             MesFim = mesFim;
             AggregateId = id;
+            Descricao = descricao;
+            FormulaCalculo = formulaCalculo;
+            Periodicidade = periodicidade;
         }
 
         public Guid Id { get; set; }
@@ -24,5 +28,8 @@ namespace Rumo.WebMetasV2.Domain.Events.IndicadorEvents
         public Enumeradores.Enumerador.TipoIndicador TipoIndicador { get; set; }
         public Enumeradores.Enumerador.Mes MesInicio { get; set; }
         public Enumeradores.Enumerador.Mes MesFim { get; set; }
+        public string Descricao { get; set; }
+        public string FormulaCalculo { get; set; }
+        public Enumeradores.Enumerador.Periodicidade Periodicidade { get; set; }
     }
 }

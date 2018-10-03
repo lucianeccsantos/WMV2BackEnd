@@ -7,7 +7,8 @@ namespace Rumo.WebMetasV2.Domain.Commands.IndicadorCommands
     {
         public AtualizarIndicadorCommand(Guid id, string nome, Enumeradores.Enumerador.DirecaoIndicador direcaoIndicador,
                                          Enumeradores.Enumerador.TipoIndicador tipoIndicador, Enumeradores.Enumerador.Mes mesInicio,
-                                         Enumeradores.Enumerador.Mes mesFim)
+                                         Enumeradores.Enumerador.Mes mesFim, string descricao, string formulaCalculo,
+                                         Enumeradores.Enumerador.Periodicidade periodicidade)
         {
             Id = id;
             Nome = nome;
@@ -15,6 +16,9 @@ namespace Rumo.WebMetasV2.Domain.Commands.IndicadorCommands
             TipoIndicador = tipoIndicador;
             MesInicio = mesInicio;
             MesFim = mesFim;
+            Descricao = descricao;
+            FormulaCalculo = formulaCalculo;
+            Periodicidade = periodicidade;
             AggregateId = id;
         }
 

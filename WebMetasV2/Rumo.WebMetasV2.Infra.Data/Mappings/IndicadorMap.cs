@@ -27,6 +27,19 @@ namespace Rumo.WebMetasV2.Infra.Data.Mappings
 
             builder.Property(c => c.TipoIndicador)
                 .IsRequired();
+
+            builder.Property(c => c.Descricao)
+                .IsRequired()
+                .HasMaxLength(200)
+                .HasColumnType("varchar(200)");
+
+            builder.Property(c => c.FormulaCalculo)
+                .IsRequired()
+                .HasMaxLength(200)
+                .HasColumnType("varchar(200)");
+
+            builder.Property(c => c.Periodicidade)
+                .IsRequired();
         }
     }
 }

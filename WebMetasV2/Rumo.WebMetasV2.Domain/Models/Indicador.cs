@@ -1,5 +1,6 @@
 ﻿using Rumo.WebMetasV2.Domain.Core.Models;
 using System;
+using System.Collections.Generic;
 
 namespace Rumo.WebMetasV2.Domain.Models
 {
@@ -7,7 +8,8 @@ namespace Rumo.WebMetasV2.Domain.Models
     {
         public Indicador(Guid id, string nome, Enumeradores.Enumerador.DirecaoIndicador direcaoIndicador, 
                          Enumeradores.Enumerador.TipoIndicador tipoIndicador, Enumeradores.Enumerador.Mes mesInicio,
-                         Enumeradores.Enumerador.Mes mesFim)
+                         Enumeradores.Enumerador.Mes mesFim, string descricao, string formulaCalculo,
+                         Enumeradores.Enumerador.Periodicidade periodicidade)
         {
             Id = id;
             Nome = nome;
@@ -15,6 +17,9 @@ namespace Rumo.WebMetasV2.Domain.Models
             TipoIndicador = tipoIndicador;
             MesInicio = mesInicio;
             MesFim = mesFim;
+            Descricao = descricao;
+            FormulaCalculo = formulaCalculo;
+            Periodicidade = periodicidade;
         }
 
         public Indicador() { }
@@ -24,5 +29,10 @@ namespace Rumo.WebMetasV2.Domain.Models
         public Enumeradores.Enumerador.TipoIndicador TipoIndicador { get; private set; }
         public Enumeradores.Enumerador.Mes MesInicio { get; private set; }
         public Enumeradores.Enumerador.Mes MesFim { get; private set; }
+        public string Descricao { get; private set; }
+        public string FormulaCalculo { get; private set; }
+        public Enumeradores.Enumerador.Periodicidade Periodicidade { get; private set; }
+
+        public virtual IEnumerable<IndicadorEscopoArea> IndicadorEscopoAreas { get; set; }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Rumo.WebMetasV2.Domain.Enumeradores;
 using System;
+using System.Collections.Generic;
 
 namespace Rumo.WebMetasV2.Application.ViewModels
 {
@@ -11,5 +12,11 @@ namespace Rumo.WebMetasV2.Application.ViewModels
         public Enumerador.TipoIndicador TipoIndicador { get; set; }
         public Enumerador.Mes MesInicio { get; set; }
         public Enumerador.Mes MesFim { get; set; }
+        public string Descricao { get; set; }
+        public string FormulaCalculo { get; set; }
+        public Enumerador.Periodicidade Periodicidade { get; set; }
+
+        public IEnumerable<IndicadorEscopoAreaViewModel> IndicadorEscopoAreas { get; set; }
+        public IEnumerable<EscopoViewModel> Escopos { get; set; }
     }
 }

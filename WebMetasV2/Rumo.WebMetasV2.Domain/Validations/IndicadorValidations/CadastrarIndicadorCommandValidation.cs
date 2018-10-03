@@ -11,6 +11,9 @@ namespace Rumo.WebMetasV2.Domain.Validations.IndicadorValidations
             ValidateMesInicio();
             ValidateNome();
             ValidateTipoIndicador();
+            ValidateDescricao();
+            ValidateFormulaCalculo();
+            ValidatePeriodicidade();
         }
     }
 }

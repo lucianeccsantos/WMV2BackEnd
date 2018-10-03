@@ -7,13 +7,17 @@ namespace Rumo.WebMetasV2.Domain.Commands.IndicadorCommands
     {
         public CadastrarIndicadorCommand(string nome, Enumeradores.Enumerador.DirecaoIndicador direcaoIndicador,
                                          Enumeradores.Enumerador.TipoIndicador tipoIndicador, Enumeradores.Enumerador.Mes mesInicio,
-                                         Enumeradores.Enumerador.Mes mesFim)
+                                         Enumeradores.Enumerador.Mes mesFim, string descricao, string formulaCalculo,
+                                         Enumeradores.Enumerador.Periodicidade periodicidade)
         {
             Nome = nome;
             DirecaoIndicador = direcaoIndicador;
             TipoIndicador = tipoIndicador;
             MesInicio = mesInicio;
             MesFim = mesFim;
+            Descricao = descricao;
+            FormulaCalculo = formulaCalculo;
+            Periodicidade = periodicidade;
         }
 
         public override bool IsValid()
