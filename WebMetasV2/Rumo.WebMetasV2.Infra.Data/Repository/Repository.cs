@@ -82,5 +82,16 @@ namespace Rumo.WebMetasV2.Infra.Data.Repository
             return result;
         }
 
+        public PagedResult<TEntity> FindBy(Func<TEntity, bool> condition, int page, int pageSize)
+        {
+            IQueryable<TEntity> query = Db.Set<TEntity>().Where(condition).AsQueryable();
+
+
+            PagedResult<TEntity> result = this.GetPagedResultForQuery(query, page, pageSize);
+            return result;
+        }
+
+
+
     }
 }

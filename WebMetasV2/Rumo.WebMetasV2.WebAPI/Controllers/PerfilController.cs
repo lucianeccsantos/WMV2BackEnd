@@ -27,7 +27,7 @@ namespace Rumo.WebMetasV2.WebAPI.Controllers
         }
 
         //api/GetPerfil
-        [HttpGet(Name ="GetPerfil")]
+        [HttpGet(Name = "GetPerfil")]
         [Route("GetPerfil")]
         public IActionResult Get()
         {
@@ -35,7 +35,7 @@ namespace Rumo.WebMetasV2.WebAPI.Controllers
         }
 
         //api/GetPerfilPaged/page
-        [HttpGet("{page}", Name ="GetPerfilPaged")]
+        [HttpGet("{page}", Name = "GetPerfilPaged")]
         [Route("GetPerfilPaged/{page:int}")]
         public IActionResult Get(int page)
         {
@@ -43,11 +43,18 @@ namespace Rumo.WebMetasV2.WebAPI.Controllers
         }
 
         //GET: api/Perfil/GetPerfilId/id
-        [HttpGet("{id}", Name ="GetPerfilId")]
+        [HttpGet("{id}", Name = "GetPerfilId")]
         [Route("GetPerfilId/{id:Guid}")]
         public IActionResult Get(Guid id)
         {
             return Response(_perfilAppService.GetById(id));
+        }
+
+        [HttpPost]
+        [Route("GetBy")]
+        public IActionResult GetBy([FromBody]PerfilViewModel perfil)
+        {
+            return Response(_perfilAppService.GetBy(perfil, 1, pageSize));
         }
 
         //POST: api/Perfil
@@ -71,7 +78,17 @@ namespace Rumo.WebMetasV2.WebAPI.Controllers
             _perfilAppService.Remove(id);
             return Response();
         }
-        
 
+        [HttpPut]
+        public IActionResult Put([FromBody]PerfilViewModel perfil)
+        {
+            if (!ModelState.IsValid)
+            {
+                NotifyModelStateErrors();
+                Response(perfil);
+            }
+            _perfilAppService.Update(perfil);
+            return Response(perfil);
+        }
     }
 }

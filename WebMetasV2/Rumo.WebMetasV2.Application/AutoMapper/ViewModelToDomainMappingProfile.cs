@@ -10,6 +10,7 @@ using Rumo.WebMetasV2.Domain.Commands.CargoCommands;
 using Rumo.WebMetasV2.Domain.Commands.DependenciaCommands;
 using Rumo.WebMetasV2.Domain.Commands.DiretoriaCommands;
 using Rumo.WebMetasV2.Domain.Commands.ColaboradorCommands;
+using Rumo.WebMetasV2.Domain.Models;
 
 namespace Rumo.WebMetasV2.Application.AutoMapper
 {
@@ -86,7 +87,10 @@ namespace Rumo.WebMetasV2.Application.AutoMapper
                 .ConstructUsing(c => new AtualizarPerfilCommand(c.Id, c.Nome, c.Situacao));
 
             CreateMap<PerfilViewModel, RemoverPerfilCommand>()
-                .ConvertUsing(c => new RemoverPerfilCommand(c.Id));
+                .ConstructUsing(c => new RemoverPerfilCommand(c.Id));
+
+            CreateMap<PerfilViewModel, Perfil>()
+                .ConstructUsing(c => new Perfil(c.Id, c.Nome, c.Situacao));
 
             #endregion
 
