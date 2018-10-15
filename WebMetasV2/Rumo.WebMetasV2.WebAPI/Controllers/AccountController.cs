@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Rumo.WebMetasV2.Application.Interfaces;
 using Rumo.WebMetasV2.Application.ViewModels;
 using Rumo.WebMetasV2.Domain.Core.Bus;
@@ -13,11 +14,15 @@ namespace Rumo.WebMetasV2.WebAPI.Controllers
     public class AccountController : ApiController
     {
         private readonly IColaboradorAppService _colaboradorAppService;
+        private readonly ILogger _logger;
 
         public AccountController(INotificationHandler<DomainNotification> notifications,
-                                 IMediatorHandler mediator, IColaboradorAppService colaboradorAppService) : base(notifications, mediator)
+                                 IMediatorHandler mediator, 
+                                 IColaboradorAppService colaboradorAppService,
+                                 ILogger logger) : base(notifications, mediator)
         {
             _colaboradorAppService = colaboradorAppService;
+            _logger = logger;
         }
 
         // POST: api/Account

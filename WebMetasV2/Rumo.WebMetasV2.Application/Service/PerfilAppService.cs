@@ -62,7 +62,15 @@ namespace Rumo.WebMetasV2.Application.Service
 
         public void Update(PerfilViewModel perfilViewModel)
         {
-            throw new NotImplementedException();
+            var updateCommand = new AtualizarPerfilCommand(perfilViewModel.Id, perfilViewModel.Nome, perfilViewModel.Situacao);
+            _bus.SendCommand(updateCommand);
+        }
+
+        public PagedResult<PerfilViewModel> GetBy(PerfilViewModel perfil, int page, int pageSize)
+        {
+            
+
+            return _mapper.Map<PagedResult<PerfilViewModel>>(_perfilrepository.GetBy(_mapper.Map<Perfil>(perfil), page, pageSize));
         }
     }
 }

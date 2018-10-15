@@ -14,5 +14,6 @@ namespace Rumo.WebMetasV2.Application.Interfaces
         void Update(PerfilViewModel perfilViewModel);
         PagedResult<PerfilViewModel> ListForPaging(int page, int pageSize);
         void Remove(Guid id);
+        PagedResult<PerfilViewModel> GetBy(PerfilViewModel perfil, int page, int pageSize);
     }
 }

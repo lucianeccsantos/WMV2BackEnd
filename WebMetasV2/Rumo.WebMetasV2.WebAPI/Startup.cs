@@ -8,6 +8,8 @@ using Rumo.WebMetasV2.Infra.Data.CrossCutting;
 using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Http;
+using Elmah.Io.AspNetCore;
+using System;
 
 namespace Rumo.WebMetasV2.WebAPI
 {
@@ -20,7 +22,8 @@ namespace Rumo.WebMetasV2.WebAPI
             var builder = new ConfigurationBuilder()
                 .SetBasePath(Directory.GetCurrentDirectory())
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddJsonFile("hosting.json", optional: true);
 
             //if (env.IsDevelopment())
             //{
@@ -39,6 +42,26 @@ namespace Rumo.WebMetasV2.WebAPI
             services.AddAutoMapper();
 
             services.AddMediatR(typeof(Startup));
+            services.AddLogging();
+
+            services.AddElmahIo(o =>
+            {// Estes dados estão disponíveis em https://app.elmah.io/, acessando com as credenciais de email do webmetas
+                o.ApiKey = "56ef02045f044d87b4cb900255c68416";
+                o.LogId = new Guid("b5534b47-a638-431b-a090-677df5c8c12b");
+            });
+            services.Configure<ElmahIoOptions>(Configuration.GetSection("ElmahIo"));
+            services.Configure<ElmahIoOptions>(o =>
+            {
+                o.OnMessage = msg =>
+                {
+                    msg.Version = "1.0.0";
+                };
+            });
+
+            services.Configure<IISOptions>(o =>
+            {
+                o.ForwardClientCertificate = false;
+            });
 
             RegisterServices(services);
         }
@@ -63,6 +86,8 @@ namespace Rumo.WebMetasV2.WebAPI
                 c.AllowAnyOrigin();
             });
 
+            app.UseElmahIo();
+            
             app.UseAuthentication();
             app.UseMvc();
         }

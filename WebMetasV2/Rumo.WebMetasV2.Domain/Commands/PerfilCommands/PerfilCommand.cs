@@ -10,5 +10,6 @@ namespace Rumo.WebMetasV2.Domain.Commands.PerfilCommands
         public Guid Id { get; protected set; }
         public string Nome { get; set; }
         public bool Situacao { get; set; }
+               
     }
 }

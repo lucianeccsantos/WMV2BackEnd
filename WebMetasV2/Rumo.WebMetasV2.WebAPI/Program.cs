@@ -7,6 +7,10 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Elmah.Io;
+using Elmah.Io.AspNetCore;
+using Elmah.Io.Extensions.Logging;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Rumo.WebMetasV2.WebAPI
 {
@@ -17,9 +21,18 @@ namespace Rumo.WebMetasV2.WebAPI
             BuildWebHost(args).Run();
         }
 
+
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()
+                .ConfigureLogging((ctx, logging) =>
+                {
+                    logging.Services.Configure<ElmahIoProviderOptions>(ctx.Configuration.GetSection("ElmahIo"));
+                    logging.AddFilter<ElmahIoLoggerProvider>(null, LogLevel.Information);
+                    logging.AddConfiguration(ctx.Configuration.GetSection("Logging"));
+                    logging.AddElmahIo();
+                })
                 .Build();
+    
     }
 }
