@@ -14,19 +14,19 @@ namespace Rumo.WebMetasV2.Domain.Validations.IndicadorEscopoAreaValidations
 
         protected void ValidateIdIndicador()
         {
-            RuleFor(c => c.Id)
+            RuleFor(c => c.IndicadorId)
                 .NotEqual(Guid.Empty).WithMessage("O id do indicador é obrigatório");
         }
 
         protected void ValidateIdEscopo()
         {
-            RuleFor(c => c.Id)
+            RuleFor(c => c.EscopoId)
                 .NotEqual(Guid.Empty).WithMessage("O id do escopo é obrigatório");
         }
 
         protected void ValidateIdArea()
         {
-            RuleFor(c => c.Id)
+            RuleFor(c => c.AreaId)
                 .NotEqual(Guid.Empty).WithMessage("O id da área é obrigatório"); ;
         }
     }

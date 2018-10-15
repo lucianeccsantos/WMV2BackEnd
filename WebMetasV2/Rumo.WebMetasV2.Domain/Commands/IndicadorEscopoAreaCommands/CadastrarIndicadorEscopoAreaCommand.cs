@@ -5,11 +5,11 @@ namespace Rumo.WebMetasV2.Domain.Commands.IndicadorEscopoAreaCommands
 {
     public class CadastrarIndicadorEscopoAreaCommand : IndicadorEscopoAreaCommand
     {
-        public CadastrarIndicadorEscopoAreaCommand(Guid idIndicador, Guid idEscopo, Guid idArea)
+        public CadastrarIndicadorEscopoAreaCommand(Guid indicadorId, Guid escopoId, Guid areaId)
         {
-            IdIndicador = idIndicador;
-            IdEscopo = idEscopo;
-            IdArea = idArea;
+            IndicadorId = indicadorId;
+            EscopoId = escopoId;
+            AreaId = areaId;
         }
 
         public override bool IsValid()

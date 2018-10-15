@@ -5,12 +5,12 @@ namespace Rumo.WebMetasV2.Domain.Commands.IndicadorEscopoAreaCommands
 {
     public class AtualizarIndicadorEscopoAreaCommand : IndicadorEscopoAreaCommand
     {
-        public AtualizarIndicadorEscopoAreaCommand(Guid id, Guid idIndicador, Guid idEscopo, Guid idArea)
+        public AtualizarIndicadorEscopoAreaCommand(Guid id, Guid indicadorId, Guid escopoId, Guid areaId)
         {
             Id = id;
-            IdIndicador = idIndicador;
-            IdEscopo = idEscopo;
-            IdArea = idArea;
+            IndicadorId = indicadorId;
+            EscopoId = escopoId;
+            AreaId = areaId;
             AggregateId = id;
         }
 

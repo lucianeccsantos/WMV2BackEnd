@@ -1,4 +1,5 @@
-﻿using Rumo.WebMetasV2.Domain.Interfaces;
+﻿using Microsoft.EntityFrameworkCore;
+using Rumo.WebMetasV2.Domain.Interfaces;
 using Rumo.WebMetasV2.Domain.Models;
 using Rumo.WebMetasV2.Infra.Data.Context;
 using System.Linq;
@@ -12,6 +13,11 @@ namespace Rumo.WebMetasV2.Infra.Data.Repository
         public AreaRepository(WebMetasContext context) : base(context)
         {
             _context = context;
+        }
+
+        public Area GetByNome(string nome)
+        {
+            return DbSet.AsNoTracking().FirstOrDefault(c => c.Nome == nome);
         }
 
         public PagedResult<Area> ListForEntity(int page, int pageSize)

@@ -176,6 +176,44 @@ namespace Rumo.WebMetasV2.Infra.Data.Migrations
                     b.ToTable("Escopo");
                 });
 
+            modelBuilder.Entity("Rumo.WebMetasV2.Domain.Models.FluxoAprovacao", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("Entidade");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FluxoAprovacao");
+                });
+
+            modelBuilder.Entity("Rumo.WebMetasV2.Domain.Models.FluxoAprovacaoEtapa", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<bool>("AprovaTudo");
+
+                    b.Property<Guid>("FluxoAprovacaoId");
+
+                    b.Property<int>("Ordem");
+
+                    b.Property<Guid>("PerfilId");
+
+                    b.Property<int>("Responsavel");
+
+                    b.Property<int>("TipoEtapa");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FluxoAprovacaoId");
+
+                    b.HasIndex("PerfilId");
+
+                    b.ToTable("FluxoAprovacaoEtapa");
+                });
+
             modelBuilder.Entity("Rumo.WebMetasV2.Domain.Models.GrupoPool", b =>
                 {
                     b.Property<Guid>("Id")
@@ -195,6 +233,8 @@ namespace Rumo.WebMetasV2.Infra.Data.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<Guid>("ColaboradorId");
 
                     b.Property<string>("Descricao")
                         .IsRequired()
@@ -223,6 +263,8 @@ namespace Rumo.WebMetasV2.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ColaboradorId");
+
                     b.ToTable("Indicador");
                 });
 
@@ -231,17 +273,11 @@ namespace Rumo.WebMetasV2.Infra.Data.Migrations
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<Guid?>("AreaId");
+                    b.Property<Guid>("AreaId");
 
-                    b.Property<Guid?>("EscopoId");
+                    b.Property<Guid>("EscopoId");
 
-                    b.Property<Guid>("IdArea");
-
-                    b.Property<Guid>("IdEscopo");
-
-                    b.Property<Guid>("IdIndicador");
-
-                    b.Property<Guid?>("IndicadorId");
+                    b.Property<Guid>("IndicadorId");
 
                     b.HasKey("Id");
 
@@ -320,6 +356,27 @@ namespace Rumo.WebMetasV2.Infra.Data.Migrations
                     b.HasOne("Rumo.WebMetasV2.Domain.Models.Unidade", "Unidade")
                         .WithMany("Colaboradores")
                         .HasForeignKey("UnidadeId")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("Rumo.WebMetasV2.Domain.Models.FluxoAprovacaoEtapa", b =>
+                {
+                    b.HasOne("Rumo.WebMetasV2.Domain.Models.FluxoAprovacao", "FluxoAprovacao")
+                        .WithMany("Etapas")
+                        .HasForeignKey("FluxoAprovacaoId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("Rumo.WebMetasV2.Domain.Models.Perfil", "Perfil")
+                        .WithMany()
+                        .HasForeignKey("PerfilId")
+                        .OnDelete(DeleteBehavior.Restrict);
+                });
+
+            modelBuilder.Entity("Rumo.WebMetasV2.Domain.Models.Indicador", b =>
+                {
+                    b.HasOne("Rumo.WebMetasV2.Domain.Models.Colaborador", "DonoIndicador")
+                        .WithMany()
+                        .HasForeignKey("ColaboradorId")
                         .OnDelete(DeleteBehavior.Restrict);
                 });
 

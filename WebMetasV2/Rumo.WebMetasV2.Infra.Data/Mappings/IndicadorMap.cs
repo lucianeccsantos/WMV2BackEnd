@@ -40,6 +40,9 @@ namespace Rumo.WebMetasV2.Infra.Data.Mappings
 
             builder.Property(c => c.Periodicidade)
                 .IsRequired();
+
+            builder.Property(c => c.ColaboradorId)
+                .IsRequired();
         }
     }
 }

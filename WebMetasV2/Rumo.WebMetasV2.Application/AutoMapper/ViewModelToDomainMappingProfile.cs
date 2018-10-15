@@ -10,6 +10,7 @@ using Rumo.WebMetasV2.Domain.Commands.CargoCommands;
 using Rumo.WebMetasV2.Domain.Commands.DependenciaCommands;
 using Rumo.WebMetasV2.Domain.Commands.DiretoriaCommands;
 using Rumo.WebMetasV2.Domain.Commands.ColaboradorCommands;
+using Rumo.WebMetasV2.Domain.Commands.IndicadorEscopoAreaCommands;
 
 namespace Rumo.WebMetasV2.Application.AutoMapper
 {
@@ -68,6 +69,22 @@ namespace Rumo.WebMetasV2.Application.AutoMapper
                 .ConstructUsing(c => new AtualizarGrupoPoolCommand(c.Id, c.Nome));
             #endregion
 
+            #region Indicador
+            CreateMap<IndicadorViewModel, CadastrarIndicadorCommand>()
+                .ConstructUsing(c => new CadastrarIndicadorCommand(c.Nome, c.DirecaoIndicador, c.TipoIndicador, c.MesInicio, c.MesFim,
+                                                                   c.Descricao, c.FormulaCalculo, c.Periodicidade));
+            CreateMap<IndicadorViewModel, AtualizarIndicadorCommand>()
+                .ConstructUsing(c => new AtualizarIndicadorCommand(c.Id, c.Nome, c.DirecaoIndicador, c.TipoIndicador, c.MesInicio, c.MesFim,
+                                                                   c.Descricao, c.FormulaCalculo, c.Periodicidade));
+            #endregion
+
+            #region Indicador Escopo Área
+            CreateMap<IndicadorEscopoAreaViewModel, CadastrarIndicadorEscopoAreaCommand>()
+                .ConstructUsing(c => new CadastrarIndicadorEscopoAreaCommand(c.IndicadorId, c.EscopoId, c.AreaId));
+            CreateMap<IndicadorEscopoAreaViewModel, AtualizarIndicadorEscopoAreaCommand>()
+                .ConstructUsing(c => new AtualizarIndicadorEscopoAreaCommand(c.Id, c.IndicadorId, c.EscopoId, c.AreaId));
+            #endregion
+
             #region Unidade
             CreateMap<UnidadeViewModel, CadastrarUnidadeCommand>()
                 .ConstructUsing(c => new CadastrarUnidadeCommand(c.Nome));
@@ -90,14 +107,7 @@ namespace Rumo.WebMetasV2.Application.AutoMapper
 
             #endregion
 
-            #region Indicador
-            CreateMap<IndicadorViewModel, CadastrarIndicadorCommand>()
-                .ConstructUsing(c => new CadastrarIndicadorCommand(c.Nome, c.DirecaoIndicador, c.TipoIndicador, c.MesInicio, c.MesFim,
-                                                                   c.Descricao, c.FormulaCalculo, c.Periodicidade));
-            CreateMap<IndicadorViewModel, AtualizarIndicadorCommand>()
-                .ConstructUsing(c => new AtualizarIndicadorCommand(c.Id, c.Nome, c.DirecaoIndicador, c.TipoIndicador, c.MesInicio, c.MesFim,
-                                                                   c.Descricao, c.FormulaCalculo, c.Periodicidade));
-            #endregion
+            
         }
     }
 }

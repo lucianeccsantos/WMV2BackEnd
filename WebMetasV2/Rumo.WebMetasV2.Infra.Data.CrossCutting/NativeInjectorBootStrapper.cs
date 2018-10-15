@@ -35,6 +35,8 @@ using Rumo.WebMetasV2.Domain.Events.ColaboradorEvents;
 using Rumo.WebMetasV2.Domain.Commands.ColaboradorCommands;
 using Rumo.WebMetasV2.Domain.Events.DiretoriaEvents;
 using Rumo.WebMetasV2.Domain.Commands.DiretoriaCommands;
+using Rumo.WebMetasV2.Domain.Events.FluxoAprovacaoEvents;
+using Rumo.WebMetasV2.Domain.Commands.FluxoAprovacaoCommands;
 
 namespace Rumo.WebMetasV2.Infra.Data.CrossCutting
 {
@@ -57,8 +59,9 @@ namespace Rumo.WebMetasV2.Infra.Data.CrossCutting
             services.AddScoped<IDependenciaAppService, DependenciaAppService>();
             services.AddScoped<IDiretoriaAppService, DiretoriaAppService>();
             services.AddScoped<IEscopoAppService, EscopoAppService>();
-            services.AddScoped<IIndicadorAppService, IndicadorAppService>();
+            services.AddScoped<IFluxoAprovacaoAppService, FluxoAprovacaoAppService>();
             services.AddScoped<IGrupoPoolAppService, GrupoPoolAppService>();
+            services.AddScoped<IIndicadorAppService, IndicadorAppService>();
             services.AddScoped<IPerfilAppService, PerfilAppService>();
             services.AddScoped<IUnidadeAppService, UnidadeAppService>();
             
@@ -101,6 +104,12 @@ namespace Rumo.WebMetasV2.Infra.Data.CrossCutting
             services.AddScoped<INotificationHandler<EscopoUpdatedEvent>, EscopoEventHandler>();
             services.AddScoped<INotificationHandler<EscopoRemovedEvent>, EscopoEventHandler>();
             #endregion 
+
+            #region Events - Fluxo Aprovacao
+            services.AddScoped<INotificationHandler<FluxoAprovacaoRegisteredEvent>, FluxoAprovacaoEventHandler>();
+            services.AddScoped<INotificationHandler<FluxoAprovacaoUpdatedEvent>, FluxoAprovacaoEventHandler>();
+            services.AddScoped<INotificationHandler<FluxoAprovacaoRemovedEvent>, FluxoAprovacaoEventHandler>();
+            #endregion
 
             #region Events - GrupoPool
             services.AddScoped<INotificationHandler<GrupoPoolRegisteredEvent>, GrupoPoolEventHandler>();
@@ -169,6 +178,12 @@ namespace Rumo.WebMetasV2.Infra.Data.CrossCutting
             services.AddScoped<INotificationHandler<RemoverEscopoCommand>, EscopoCommandHandler>();
             #endregion
 
+            #region Commands - Fluxo Aprovacao
+            services.AddScoped<INotificationHandler<CadastrarFluxoAprovacaoCommand>, FluxoAprovacaoCommandHandler>();
+            services.AddScoped<INotificationHandler<AtualizarFluxoAprovacaoCommand>, FluxoAprovacaoCommandHandler>();
+            services.AddScoped<INotificationHandler<RemoverFluxoAprovacaoCommand>, FluxoAprovacaoCommandHandler>();
+            #endregion
+
             #region Commands - GrupoPool
             services.AddScoped<INotificationHandler<CadastrarGrupoPoolCommand>, GrupoPoolCommandHandler>();
             services.AddScoped<INotificationHandler<AtualizarGrupoPoolCommand>, GrupoPoolCommandHandler>();
@@ -209,6 +224,7 @@ namespace Rumo.WebMetasV2.Infra.Data.CrossCutting
             services.AddScoped<IDependenciaRepository, DependenciaRepository>();
             services.AddScoped<IDiretoriaRepository, DiretoriaRepository>();
             services.AddScoped<IEscopoRepository, EscopoRepository>();
+            services.AddScoped<IFluxoAprovacaoRepository, FluxoAprovacaoRepository>();
             services.AddScoped<IGrupoPoolRepository, GrupoPoolRepository>();
             services.AddScoped<IPerfilRepository, PerfilRepository>();
             services.AddScoped<IIndicadorRepository, IndicadorRepository>();

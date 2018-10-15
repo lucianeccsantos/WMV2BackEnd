@@ -35,7 +35,7 @@ namespace Rumo.WebMetasV2.WebAPI.Controllers
         [Route("GetIndicadorPaged/{id:int}")]
         public IActionResult Get(int id)
         {
-            return Response(_indicadorAppService.ListForPaging(id, pageSize));
+            return Response(_indicadorAppService.ListForPaging(id, pageSize, c => c.DonoIndicador));
         }
 
         // GET: api/Indicador/id

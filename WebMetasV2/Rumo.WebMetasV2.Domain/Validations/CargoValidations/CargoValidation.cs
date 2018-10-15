@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using Rumo.WebMetasV2.Domain.Commands.CargoCommands;
+using Rumo.WebMetasV2.Domain.Interfaces;
 using System;
 
 namespace Rumo.WebMetasV2.Domain.Validations.CargoValidations

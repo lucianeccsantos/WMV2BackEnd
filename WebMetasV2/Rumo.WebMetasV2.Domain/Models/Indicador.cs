@@ -9,7 +9,7 @@ namespace Rumo.WebMetasV2.Domain.Models
         public Indicador(Guid id, string nome, Enumeradores.Enumerador.DirecaoIndicador direcaoIndicador, 
                          Enumeradores.Enumerador.TipoIndicador tipoIndicador, Enumeradores.Enumerador.Mes mesInicio,
                          Enumeradores.Enumerador.Mes mesFim, string descricao, string formulaCalculo,
-                         Enumeradores.Enumerador.Periodicidade periodicidade)
+                         Enumeradores.Enumerador.Periodicidade periodicidade, Guid colaboradorId)
         {
             Id = id;
             Nome = nome;
@@ -20,6 +20,7 @@ namespace Rumo.WebMetasV2.Domain.Models
             Descricao = descricao;
             FormulaCalculo = formulaCalculo;
             Periodicidade = periodicidade;
+            ColaboradorId = colaboradorId;
         }
 
         public Indicador() { }
@@ -32,7 +33,9 @@ namespace Rumo.WebMetasV2.Domain.Models
         public string Descricao { get; private set; }
         public string FormulaCalculo { get; private set; }
         public Enumeradores.Enumerador.Periodicidade Periodicidade { get; private set; }
+        public Guid ColaboradorId { get; set; }
 
         public virtual IEnumerable<IndicadorEscopoArea> IndicadorEscopoAreas { get; set; }
+        public virtual Colaborador DonoIndicador { get; set; }
     }
 }

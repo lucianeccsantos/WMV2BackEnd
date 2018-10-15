@@ -5,18 +5,18 @@ namespace Rumo.WebMetasV2.Domain.Events.IndicadorEscopoAreaEvents
 {
     public class IndicadorEscopoAreaUpdatedEvent : Event
     {
-        public IndicadorEscopoAreaUpdatedEvent(Guid id, Guid idIndicador, Guid idEscopo, Guid idArea)
+        public IndicadorEscopoAreaUpdatedEvent(Guid id, Guid indicadorId, Guid escopoId, Guid areaId)
         {
             Id = id;
-            IdIndicador = idIndicador;
-            IdEscopo = idEscopo;
-            IdArea = idArea;
+            IndicadorId = indicadorId;
+            EscopoId = escopoId;
+            AreaId = areaId;
             AggregateId = id;
         }
 
         public Guid Id { get; set; }
-        public Guid IdIndicador { get; set; }
-        public Guid IdEscopo { get; set; }
-        public Guid IdArea { get; set; }
+        public Guid IndicadorId { get; set; }
+        public Guid EscopoId { get; set; }
+        public Guid AreaId { get; set; }
     }
 }

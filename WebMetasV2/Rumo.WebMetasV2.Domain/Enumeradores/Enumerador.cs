@@ -41,5 +41,27 @@
             Quadrimestral = 4,
             Semestral = 5
         }
+
+        public enum Entidades
+        {
+            MetasIndividuais = 1,
+            Indicador = 2,
+            ValoresIndicador = 3,
+            ValoresRealizados = 4,
+            ValoresRealizadosRetroativos = 5
+        }
+
+        public enum Responsavel
+        {
+            Proprietario = 1,
+            SuperiorImediato = 2,
+            Perfil = 3
+        }
+
+        public enum TipoEtapa
+        {
+            E = 1,
+            OU = 2
+        }
     }
 }

@@ -38,6 +38,12 @@ namespace Rumo.WebMetasV2.Domain.CommandHandlers
 
             var area = new Area(Guid.NewGuid(), message.Nome);
 
+            if (_areaRepository.GetByNome(area.Nome) != null)
+            {
+                Bus.RaiseEvent(new DomainNotification(message.MessageType, "Já existe uma área com esse nome."));
+                return Task.CompletedTask;
+            }
+
             _areaRepository.Add(area);
 
             if (Commit())
@@ -58,6 +64,12 @@ namespace Rumo.WebMetasV2.Domain.CommandHandlers
             }
 
             var area = new Area(message.Id, message.Nome);
+
+            if (_areaRepository.GetByNome(area.Nome) != null)
+            {
+                Bus.RaiseEvent(new DomainNotification(message.MessageType, "Já existe uma área com esse nome."));
+                return Task.CompletedTask;
+            }
 
             _areaRepository.Update(area);
 

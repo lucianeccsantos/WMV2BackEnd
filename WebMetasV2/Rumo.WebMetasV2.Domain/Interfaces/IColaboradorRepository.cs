@@ -9,5 +9,6 @@ namespace Rumo.WebMetasV2.Domain.Interfaces
         PagedResult<Colaborador> ListForEntity(int page, int pageSize, params Expression<Func<Colaborador, object>>[] includes);
         Colaborador GetByLogin(string login);
         Colaborador ColaboradorESuperiorImediato(Guid id);
+        Colaborador GetByCargo(Guid idCargo);
     }
 }

@@ -15,8 +15,10 @@ namespace Rumo.WebMetasV2.Application.ViewModels
         public string Descricao { get; set; }
         public string FormulaCalculo { get; set; }
         public Enumerador.Periodicidade Periodicidade { get; set; }
+        public Guid ColaboradorId { get; set; }
 
         public IEnumerable<IndicadorEscopoAreaViewModel> IndicadorEscopoAreas { get; set; }
         public IEnumerable<EscopoViewModel> Escopos { get; set; }
+        public ColaboradorViewModel DonoIndicador { get; set; }
     }
 }

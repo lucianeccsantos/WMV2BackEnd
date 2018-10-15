@@ -5,5 +5,6 @@ namespace Rumo.WebMetasV2.Domain.Interfaces
     public interface IAreaRepository : IRepository<Area>
     {
         PagedResult<Area> ListForEntity(int page, int pageSize);
+        Area GetByNome(string nome);
     }
 }

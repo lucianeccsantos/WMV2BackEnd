@@ -36,8 +36,8 @@ namespace Rumo.WebMetasV2.Domain.CommandHandlers
                 return Task.CompletedTask;
             }
 
-            var indicador = new Indicador(Guid.NewGuid(), message.Nome, message.DirecaoIndicador, message.TipoIndicador, message.MesInicio, message.MesFim,
-                                          message.Descricao, message.FormulaCalculo, message.Periodicidade);
+            var indicador = new Indicador(message.Id, message.Nome, message.DirecaoIndicador, message.TipoIndicador, message.MesInicio, message.MesFim,
+                                          message.Descricao, message.FormulaCalculo, message.Periodicidade, message.ColaboradorId);
 
             _indicadorRepository.Add(indicador);
 
@@ -45,7 +45,7 @@ namespace Rumo.WebMetasV2.Domain.CommandHandlers
             {
                 Bus.RaiseEvent(new IndicadorRegisteredEvent(indicador.Id, indicador.Nome, indicador.DirecaoIndicador, indicador.TipoIndicador,
                                                             indicador.MesInicio, indicador.MesFim, indicador.Descricao, indicador.FormulaCalculo, 
-                                                            indicador.Periodicidade));
+                                                            indicador.Periodicidade, indicador.ColaboradorId));
                 return Task.CompletedTask;
             }
 
@@ -61,7 +61,7 @@ namespace Rumo.WebMetasV2.Domain.CommandHandlers
             }
 
             var indicador = new Indicador(message.Id, message.Nome, message.DirecaoIndicador, message.TipoIndicador, message.MesInicio, message.MesFim,
-                                          message.Descricao, message.FormulaCalculo, message.Periodicidade);
+                                          message.Descricao, message.FormulaCalculo, message.Periodicidade, message.ColaboradorId);
 
             _indicadorRepository.Update(indicador);
 
@@ -69,7 +69,7 @@ namespace Rumo.WebMetasV2.Domain.CommandHandlers
             {
                 Bus.RaiseEvent(new IndicadorUpdatedEvent(indicador.Id, indicador.Nome, indicador.DirecaoIndicador, indicador.TipoIndicador,
                                                          indicador.MesInicio, indicador.MesFim, indicador.Descricao, indicador.FormulaCalculo,
-                                                            indicador.Periodicidade));
+                                                            indicador.Periodicidade, indicador.ColaboradorId));
                 return Task.CompletedTask;
             }
 

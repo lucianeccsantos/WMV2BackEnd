@@ -1,5 +1,4 @@
 ﻿using Rumo.WebMetasV2.Domain.Validations.IndicadorValidations;
-using System;
 
 namespace Rumo.WebMetasV2.Domain.Commands.IndicadorCommands
 {

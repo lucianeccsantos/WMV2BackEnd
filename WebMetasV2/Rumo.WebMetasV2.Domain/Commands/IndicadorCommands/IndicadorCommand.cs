@@ -14,5 +14,6 @@ namespace Rumo.WebMetasV2.Domain.Commands.IndicadorCommands
         public string Descricao { get; set; }
         public string FormulaCalculo { get; set; }
         public Enumeradores.Enumerador.Periodicidade Periodicidade { get; set; }
+        public Guid ColaboradorId { get; set; }
     }
 }

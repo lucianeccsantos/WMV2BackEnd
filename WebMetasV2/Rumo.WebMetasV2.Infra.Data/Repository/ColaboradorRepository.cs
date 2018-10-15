@@ -22,6 +22,11 @@ namespace Rumo.WebMetasV2.Infra.Data.Repository
             return DbSet.AsNoTracking().FirstOrDefault(c => c.SuperiorImediatoId == id);
         }
 
+        public Colaborador GetByCargo(Guid idCargo)
+        {
+            return DbSet.AsNoTracking().FirstOrDefault(c => c.CargoId == idCargo);
+        }
+
         public Colaborador GetByLogin(string login)
         {
             return DbSet.AsNoTracking().FirstOrDefault(c => c.Login == login);

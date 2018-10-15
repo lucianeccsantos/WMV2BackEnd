@@ -11,13 +11,13 @@ namespace Rumo.WebMetasV2.Infra.Data.Mappings
             builder.Property(c => c.Id)
                 .IsRequired();
 
-            builder.Property(c => c.IdArea)
+            builder.Property(c => c.AreaId)
                 .IsRequired();
 
-            builder.Property(c => c.IdEscopo)
+            builder.Property(c => c.EscopoId)
                 .IsRequired();
 
-            builder.Property(c => c.IdIndicador)
+            builder.Property(c => c.IndicadorId)
                 .IsRequired();
         }
     }

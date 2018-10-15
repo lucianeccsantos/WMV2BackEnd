@@ -19,6 +19,8 @@ namespace Rumo.WebMetasV2.Infra.Data.Context
         public DbSet<GrupoPool> GrupoPool { get; set; }
         public DbSet<Indicador> Indicador { get; set; }
         public DbSet<IndicadorEscopoArea> IndicadorEscopoArea { get; set; }
+        public DbSet<FluxoAprovacao> FluxoAprovacao { get; set; }
+        public DbSet<FluxoAprovacaoEtapa> FluxoAprovacaoEtapa { get; set; }
         public DbSet<Perfil> Perfil { get; set; }
         public DbSet<StoredEvent> StoredEvent { get; set; }
         public DbSet<Unidade> Unidade { get; set; }        
@@ -34,6 +36,8 @@ namespace Rumo.WebMetasV2.Infra.Data.Context
             modelBuilder.ApplyConfiguration(new GrupoPoolMap());
             modelBuilder.ApplyConfiguration(new IndicadorMap());
             modelBuilder.ApplyConfiguration(new IndicadorEscopoAreaMap());
+            modelBuilder.ApplyConfiguration(new FluxoAprovacaoMap());
+            modelBuilder.ApplyConfiguration(new FluxoAprovacaoEtapaMap());
             modelBuilder.ApplyConfiguration(new PerfilMap());
             modelBuilder.ApplyConfiguration(new StoredEventMap());
             modelBuilder.ApplyConfiguration(new UnidadeMap());

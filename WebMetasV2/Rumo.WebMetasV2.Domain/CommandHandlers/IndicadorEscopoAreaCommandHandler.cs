@@ -36,14 +36,14 @@ namespace Rumo.WebMetasV2.Domain.CommandHandlers
                 return Task.CompletedTask;
             }
 
-            var indicadorEscopoArea = new IndicadorEscopoArea(Guid.NewGuid(), message.IdIndicador, message.IdEscopo, message.IdArea);
+            var indicadorEscopoArea = new IndicadorEscopoArea(Guid.NewGuid(), message.IndicadorId, message.EscopoId, message.AreaId);
 
             _indicadorEscopoAreaRepository.Add(indicadorEscopoArea);
 
             if (Commit())
             {
-                Bus.RaiseEvent(new IndicadorEscopoAreaRegisteredEvent(indicadorEscopoArea.Id, indicadorEscopoArea.IdIndicador, indicadorEscopoArea.IdEscopo,
-                                                                      indicadorEscopoArea.IdArea));
+                Bus.RaiseEvent(new IndicadorEscopoAreaRegisteredEvent(indicadorEscopoArea.Id, indicadorEscopoArea.IndicadorId, indicadorEscopoArea.EscopoId,
+                                                                      indicadorEscopoArea.AreaId));
                 return Task.CompletedTask;
             }
 
@@ -58,13 +58,13 @@ namespace Rumo.WebMetasV2.Domain.CommandHandlers
                 return Task.CompletedTask;
             }
 
-            var indicadorEscopoArea = new IndicadorEscopoArea(message.Id, message.IdIndicador, message.IdEscopo, message.IdArea);
+            var indicadorEscopoArea = new IndicadorEscopoArea(message.Id, message.IndicadorId, message.EscopoId, message.AreaId);
 
             _indicadorEscopoAreaRepository.Update(indicadorEscopoArea);
 
             if (Commit())
             {
-                Bus.RaiseEvent(new IndicadorEscopoAreaUpdatedEvent(message.Id, message.IdIndicador, message.IdEscopo, message.IdArea));
+                Bus.RaiseEvent(new IndicadorEscopoAreaUpdatedEvent(message.Id, message.IndicadorId, message.EscopoId, message.AreaId));
                 return Task.CompletedTask;
             }
 
