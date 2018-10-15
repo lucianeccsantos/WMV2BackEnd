@@ -43,7 +43,5 @@ namespace Rumo.WebMetasV2.Infra.Data.Repository
             var result = FindBy(condition, page, pageSize);
             return result;
         }
-
-        p
     }
 }
